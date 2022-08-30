@@ -1,0 +1,4 @@
+/* logo */
+.footer{ display: flex; justify-content:center; align-items: center;}
+.footer .pic{width: 80rpx;}
+.footer .text{ font-size: 34rpx; color: #777;}

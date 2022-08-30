@@ -1,0 +1,100 @@
+
+<view style="z-index: -1; position: absolute; margin-bottom: 120rpx;">
+
+<!-- 标题 -->
+<view class="Title" style="width:610rpx; margin:30rpx 70rpx;">
+  <textarea bindblur="titleShijiao" placeholder="标题不能为空..." auto-height="true" data-title="title" maxlength="38" bindinput="bindinput"
+  style=" font-size: 45rpx;  background: #fcfcfc; opacity: 0.75;">
+  </textarea>
+</view>
+
+
+
+
+<!-- 内容 -->
+<view wx:for="{{array}}" wx:key="index" wx:for-item="item0" wx:for-index="index0" 
+style="width:690rpx; margin: 0rpx 30rpx; margin-bottom: 30rpx; ">
+
+  <!-- 文本 -->
+  <block wx:if="{{item0.flag==0}}">
+
+    <view style="display: flex; justify-content: space-between; background-color: #fcfcfc;">
+      <textarea decode placeholder="尽情发挥吧..." auto-height="true" maxlength="500" style="height: 50rpx; width: 620rpx; opacity: 0.75;" 	bindblur="shijiaotijiao" data-index0="{{index0}}" value="{{item0.nr=='text'?'':item0.nr}}">
+      </textarea>
+      <view class="delete" style="font-size: 30rpx; width: 50rpx; height: 50rpx; margin-left: 20rpx;" bindtap="deltext" data-index0="{{index0}}">❌</view>
+    </view>
+    
+  </block>
+
+
+  <!-- 图片 -->
+  <block wx:else>
+    <view style="display: flex; justify-content: space-between;">
+      <image src="{{item0.nr==''?'':item0.nr}}" mode="aspectFit" bindtap="lookimg" style="max-width: 630rpx; max-height: 370rpx;" data-url="{{item0.nr}}">
+      </image>
+       <view class="delete" bindtap="deltext" style="font-size: 30rpx; width: 50rpx; height: 50rpx; margin-left: 10rpx;" data-index0="{{index0}}">❌</view>
+    </view>
+  </block>
+
+</view>
+
+</view>
+
+
+
+<!--增加文本框，增加图片-->
+<view class="dibu::before" style="width: 100%; bottom: 0rpx; height: 100rpx; display:flex; justify-content: space-between; align-items: center; position:fixed; border-top:thin solid #f5f5f5; background-color:#f5f5f5;">
+
+
+  <!-- 文本框 -->
+  <view style="display: flex;  margin-left: 5%;" bindtap="addtext">
+    <image src="/images/icon/wenben.png" style="width: 50rpx; height: 50rpx;"></image>
+    <view>文本</view>
+  </view>
+
+  <!-- 图片 -->
+  <view style="display: flex;" bindtap="addimg">
+    <image src="/images/icon/tupian.png" style="width: 50rpx; height: 50rpx;"></image>
+    <view>图片</view>
+  </view>
+
+  <!-- 分类 -->
+  <view>
+    <picker mode="multiSelector" name="fenlei" bindchange="xuanzewanbi" bindcolumnchange="kaishixuanzhe" value="{{zilei}}" range="{{heji}}">
+      <view  style="display: flex;">
+        <image src="/images/icon/fenlei.png" style="width: 50rpx; height: 50rpx;"></image>
+        <view>分类</view>
+      </view>
+    </picker>
+  </view>
+
+  <!-- 提交 -->
+  <view style="display: flex; margin-right: 5%;" bindtap="tijiao">
+    <image src="/images/icon/fabu.png" style="width: 50rpx; height: 50rpx;"></image>
+    <view>发布</view>
+  </view>
+
+</view>
+
+
+
+<!-- 下面是用于图片压缩的画布 -->
+<canvas canvas-id='huabu' style='position: absolute;left:-4000px;top:-4000px;width: 4000px; height: 4000px;' ></canvas>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

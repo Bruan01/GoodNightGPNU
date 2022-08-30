@@ -1,0 +1,13 @@
+<!-- logo -->
+<view class="footer">
+  <image class="pic" src="/images/logo2.jpg" mode="widthFix"></image>
+  <view class="text">-感谢您的支持！-</view>
+</view>
+
+
+<!-- <view style="bottom: 0%; position: fixed;">
+  <view style="display: flex; justify-content:center; align-items: center;">
+    <image style="width: 80rpx;" src="/images/logo2.jpg" mode="widthFix"></image>
+    <view style="font-size: 34rpx; color: #777;">-感谢您的支持！-</view>
+  </view>
+</view> -->

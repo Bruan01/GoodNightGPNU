@@ -1,0 +1,117 @@
+{
+  "setting": {},
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "my",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "tool",
+          "pathName": "pages/tool/tool",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "myinfornation",
+          "pathName": "pages/myinfornation/myinfornation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "mytopic",
+          "pathName": "pages/mytopic/mytopic",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "detail",
+          "pathName": "pages/detail/detail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "boke",
+          "pathName": "pages/boke/boke",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "dontai",
+          "pathName": "pages/dontai/dontai",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "jielou",
+          "pathName": "pages/jielou/jielou",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "随机数",
+          "pathName": "pages/suijishu/suijishu",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "anmianqu",
+          "pathName": "pages/anmianqu/anmianqu",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "fankui",
+          "pathName": "pages/fankui/fankui",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "plp",
+          "pathName": "pages/plp/plp",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/food_list/food_list",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/jielou/jielou",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "plguode",
+          "pathName": "pages/plguode/plguode",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/jielou/jielou",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html"
+}

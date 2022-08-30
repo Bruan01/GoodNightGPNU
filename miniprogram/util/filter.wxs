@@ -1,0 +1,100 @@
+//数量变化值
+var getNumber=function(num){
+  if(num<1000){
+    return num;
+  }else if(num>=1000 && num<10000){
+    var n=(num/1000).toFixed(1)+"K"
+    return n;
+  }else if(num>=10000 && num<100000){
+    var n=(num/10000).toFixed(1)+"W"
+    return n;
+  }else if(num>=100000){
+    return "10W+";
+  }else{
+    return 0;
+  }
+}
+
+
+
+var timeChn = function (val) {
+  var realTime = getDate(val).getTime()
+  var nowTime = getDate().getTime()
+  var diffValue = nowTime - realTime
+  var _min = diffValue / (60 * 1000)
+  //console.log("时间：",_min)
+  if (_min < 1) {
+    return '刚刚'
+  } else if (_min >= 1 && _min < 60) {
+    return Math.ceil(_min)+'分钟前'
+  } else if (_min >= 60 && _min < 60 * 24) {
+    return Math.floor(_min / 60) + '小时前'
+  } else if (_min >= 60 * 24 && _min < 60 * 24 * 30) {
+    return Math.floor(_min / (60 * 24)) + '天前'
+  } else if(_min >= 60 * 24 * 30 && _min < 60 * 24 * 30 * 12){
+    return Math.floor(_min / (60 * 24 * 30)) + '月前'
+  }else if(_min >= 60 * 24 * 30 * 12 ){
+    return Math.floor(_min / (60 * 24 * 30 * 12)) + '年前'
+  }
+}
+
+
+//多功能时间戳转时间格式方式
+var getTime = function(t, type=0){
+  var time=getDate(t);
+  var year=time.getFullYear()+"";
+  var month=time.getMonth()+1;
+  month=month<10 ? "0"+month : month+"";
+  var day=time.getDate();
+  day=day<10? "0"+day : day+"";
+  var hours=time.getHours();
+  hours=hours<10? "0"+hours : hours+"";
+  var min=time.getMinutes();
+  min=min<10? "0"+min : min+"";
+  var second=time.getSeconds();
+  second=second<10? "0"+second : second+"";
+
+  var arr=[
+    year+"-"+month+"-"+day,
+    year+"年"+month+"月"+day+"日",
+    year+"-"+month+"-"+day+" "+hours+":"+min+":"+second,
+    year+"年"+month+"月"+day+"日 "+hours+"时"+min+"分"+second+"秒",
+    month+"-"+day,
+    month+"月"+day+"日",
+    hours+":"+min+":"+second,
+    hours+"时"+min+"分"+second+"秒"
+  ]
+  return arr[type]
+}
+
+
+var getDateTime = function (value, type = 0) {
+  //不能使用 new Date()
+  var time = getDate(value);
+  var year = time.getFullYear();
+  var month = time.getMonth() + 1;
+  var date = time.getDate();
+  var hour = time.getHours();
+  var minute = time.getMinutes();
+  var second = time.getSeconds();
+  month = month < 10 ? "0" + month : month;
+  date = date < 10 ? "0" + date : date;
+  hour = hour < 10 ? "0" + hour : hour;
+  minute = minute < 10 ? "0" + minute : minute;
+  second = second < 10 ? "0" + second : second;
+  var arr = [
+      year + "-" + month + "-" + date,
+      year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second,
+      year + "年" + month + "月" + date + " " + hour + ":" + minute + ":" + second,
+      year + "年" + month + "月" + date,
+      hour + ":" + minute + ":" + second
+  ]
+  return arr[type];
+}
+
+module.exports = {
+  timeChn: timeChn,
+  getTime: getTime,
+  getDateTime: getDateTime,
+  getNumber:getNumber
+}

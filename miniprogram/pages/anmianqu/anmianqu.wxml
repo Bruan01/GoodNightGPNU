@@ -1,0 +1,78 @@
+<!--index.wxml-->
+<view class="container">
+    <!--列表操作-->
+      <view class="title-container">
+        <view class="title-left"></view>
+        <view class="text">
+          <view><text class="name">{{audioList[audioIndex].name}}</text></view>
+          <view><text class="author">-- {{audioList[audioIndex].author}} --</text></view>
+        </view>
+        <image src="/images/user/list.png" class="icon-list" bindtap="bindTapList"></image>
+      </view>
+
+
+    <!--旋转图-->
+    <view class="rotate-disk-container">
+      <view class="rotate-disk {{pauseStatus === false ? 'rotate-360' : 'rotate-360-paused'}}">
+        <image class="poster" src="{{audioList[audioIndex].poster}}"></image>
+      </view>
+    </view>
+
+    <!-- 进度条 -->
+    <view class="slider-container">
+      <text class="slider-time">{{currentPosition === 0 ? '' : currentPosition}}</text>
+      <slider
+          value="{{sliderValue}}"
+          bindchange="bindSliderchange"
+          activeColor="#13beec"
+          style="width: 62%;margin: 0;"
+          block-size="12"
+          block-color="#13beec"
+        />
+      <text class="slider-time">{{duration === 0 ? '' : duration}}</text>
+    </view>
+
+    <!-- 播放操作 -->
+    <view wx:if="{{listShow==false}}" class="operation-container">
+      <image src="/images/user/prev.png" class="icon-prev" bindtap="bindTapPrev"></image>
+      <image
+        src="{{pauseStatus === false ? '/images/user/pause.png' : '/images/user/play.png'}}"
+        class="icon-play" bindtap="bindTapPlay"
+        >
+        </image>
+      <image src="/images/user/next.png" class="icon-next" bindtap="bindTapNext"></image>
+    </view>
+    
+</view>
+
+
+
+  <!--第五层：列表页-->
+  <page-container overlay="true" position="bottom" round="true" show="{{listShow}}" custom-style="height: 60%; width:100%" bind:clickoverlay="closeList" z-index="1">
+    <view style="height: 100%;">
+
+    <view style="height: 10%; opacity: 0.75; display: flex; align-items: center; justify-content: center;">歌曲列表</view>
+
+    <scroll-view class="list" scroll-y>
+      <view wx:for="{{audioList}}" wx:key="index">
+        <view
+          id="{{index}}"
+          class="list-one {{index === audioIndex ? 'list-one-choose' : ''}}"
+          hover-class="list-one-choose"
+          bindtap="bindTapChoose"
+          >
+          <image class="list-one-poster" src="{{item.poster}}"></image>
+          <view class="nameauthor">
+            <text>{{item.name}}</text>
+            <text style="left: 60%; position: absolute;">{{item.author}}</text>
+          </view>
+        </view>
+
+      </view>
+    </scroll-view>
+
+  </view>
+</page-container>
+
+
+

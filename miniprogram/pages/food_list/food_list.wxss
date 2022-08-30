@@ -1,0 +1,39 @@
+/* pages/eat/eat.wxss */
+page{
+  height: 100%;
+}
+
+.bigbox{
+  height: 100%;
+  width: 100%;
+}
+
+.bj{width: 750rpx;}
+
+
+/* 第一个按钮多色渐变 */
+.bt_1{
+  margin-top: 40rpx;
+  background: linear-gradient(to right,#f8ccc2, #e5eba4, #a1a6bd);
+  width: 50%;  
+  border-radius: 50rpx;
+  
+}
+.bt_2{
+margin-top: 40rpx;
+background: linear-gradient(to right,#f9957f, #e5eba4, #96a2db, #c973ff );
+width: 50%;  
+border-radius: 50rpx;
+}
+
+.bt_3{
+margin-top: 40rpx;
+background: linear-gradient(to right,#f9957f, #e5eba4, #96a2db, #c973ff );
+width: 50%;  
+border-radius: 50rpx;
+}
+
+
+
+/* 底部 */
+.loading{text-align: center;padding:30rpx 0}

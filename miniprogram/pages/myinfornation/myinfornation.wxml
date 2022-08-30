@@ -1,0 +1,325 @@
+<!-- 个人信息页面 -->
+<view class="ifo">
+    <view class="box" bindtap="{{same?'touch':''}}">
+        <van-cell-group>
+            <view class="head">
+                <van-field
+                    name="userphoto"
+                    required
+                    clearable
+                    readonly
+                    size="large"
+                    label="头像"
+                    placeholder=""
+                    bind:blur="reData"
+                />
+                <view class="pic">
+                    <image src="{{userphoto}}"  mode="widthFix"></image>
+                </view>
+            </view>
+                
+            <view class="body">
+                <van-field
+                    model:value="{{ username }}"
+                    name="username"
+                    required
+                    readonly
+                    clearable
+                    title-width="25%"
+                    right-icon="{{same?'arrow':''}}"
+                    label="用户名"
+                    placeholder="请输入用户名"
+                    bind:blur="reData"
+                />
+
+
+                <van-field
+                    model:value="{{ sex }}"
+                    name="sex"
+                    required
+                    error-message="{{right?'':'性别格式错误'}}"
+                    readonly='{{!same}}'
+                    title-width="25%"
+                    right-icon="{{same ? 'arrow' : ''}}"
+                    label="性别"
+                    placeholder="{{same ? '请输入性别(男/女)' : ''}}"
+                    bind:blur="reData"
+                />
+                
+                <!-- 先判断是否是本人进入信息页，再判断一些隐藏的选项是否填入了信息，若填入了信息，则需要在别人进入我们的信息页时将该选项渲染出来 -->
+                <block wx:if="{{same}}">
+                    <view style="display: flex;height: 85rpx;">
+                        <view style="width: 30%;height: 100%;">
+                            <van-field
+                                name="birthday"
+                                required
+                                readonly                     
+                                label="出生日期"
+                            />
+                        </view>
+                        <view  style="width: 70%;height: 100%;display: flex;align-items: center;font-size: 28.5rpx;">
+                            <view style="color:rgb(80,80,80);display: flex;justify-content: space-between;width:100%;height: 100%;display: flex;align-items: center;">
+                                <view style="width: 88%;">
+                                    <input bindtap="{{same?'show_Date':''}}"  placeholder="{{same ? '请选择出生日期' : ''}}"  placeholder-style="color:rgb(200,200,200)"  value="{{birthday?birthday:''}}"  disabled />
+                                    <van-popup
+                                    show="{{ show1 }}"
+                                    position="bottom"
+                                    custom-style="height: 50%;"
+                                    >
+                                        <van-datetime-picker
+                                        wx:if="{{flag1}}"
+                                        type="date"
+                                        value="{{timestamp}}"
+                                        bind:confirm="finish_choice_Date"
+                                        bind:cancel="close_show_Date"
+                                        min-date="631123200000"
+                                        max-date="{{timestamp}}"
+                                        formatter="{{ formatter }}"
+                                        />
+                                    </van-popup>
+                                </view>
+                                <view style="width: 12%;">
+                                    <van-icon name="{{same ?'arrow' :''}}" size="33rpx" color="rgb(135,135,135)"/>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+                <block wx:else="">
+                    <view wx:if="{{birthday}}" style="display: flex;height: 85rpx;">
+                        <view style="width: 30%;height: 100%;">
+                            <van-field
+                                name="birthday"
+                                required
+                                readonly                     
+                                label="出生日期"
+                            />
+                        </view>
+                        <view  style="width: 70%;height: 100%;display: flex;align-items: center;font-size: 28.5rpx;">
+                            <view style="color:rgb(80,80,80);display: flex;justify-content: space-between;width:100%;height: 100%;display: flex;align-items: center;">
+                                <view style="width: 88%;">
+                                    <input bindtap="{{same?'show_Date':''}}"  placeholder="{{same ? '请选择出生日期' : ''}}"  placeholder-style="color:rgb(200,200,200)"  value="{{birthday}}"  disabled />
+                                    <van-popup
+                                    show="{{ show1 }}"
+                                    position="bottom"
+                                    custom-style="height: 50%;"
+                                    >
+                                        <van-datetime-picker
+                                        wx:if="{{flag1}}"
+                                        type="date"
+                                        value="{{timestamp}}"
+                                        bind:confirm="finish_choice_Date"
+                                        bind:cancel="close_show_Date"
+                                        min-date="946656000000"
+                                        max-date="{{timestamp}}"
+                                        formatter="{{ formatter }}"
+                                        />
+                                    </van-popup>
+                                </view>
+                                <view style="width: 12%;">
+                                    <van-icon name="{{same ?'arrow' :''}}" size="33rpx" color="rgb(135,135,135)"/>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+                
+
+                <van-field
+                    model:value="{{ xueyuan }}"
+                    name="xueyuan"
+                    required
+                    clearable
+                    readonly='{{!same}}'
+                    title-width="25%"
+                    right-icon="{{same ?'arrow':''}}"
+                    label="学院"
+                    placeholder="{{same ?'请输入所在学院':''}}"
+                    bind:blur="reData"
+                />
+                
+                <van-field
+                    model:value="{{ special }}"
+                    name="special"
+                    required
+                    clearable
+                    readonly='{{!same}}'
+                    title-width="25%"
+                    right-icon="{{same?'arrow':''}}"
+                    label="专业"
+                    placeholder="{{same ?'请输入所在专业':''}}"
+                    bind:blur="reData"
+                />
+                <block wx:if="{{same}}">
+                    <view  style="display: flex;height: 85rpx;">
+                        <view style="width: 30%;height: 100%;">
+                            <van-field
+                                name="region"
+                                required
+                                readonly                       
+                                label="地区"
+                            />
+                        </view>
+                        <view style="width: 70%;height: 100%;display: flex;align-items: center;font-size: 28.5rpx;">
+                            <view style="color:rgb(80,80,80);width:100%;height: 100%; display: flex;align-items: center; justify-content: space-between;">
+                                <view style="width: 88%;">
+                                    <input bindtap="{{same?'show_Area':''}}"  placeholder="{{same?'请选择所在地区':''}}" placeholder-style="color:rgb(200,200,200)" value="{{region?region:''}}" style="font-size: 28rpx;" disabled />
+                                    <van-popup
+                                    show="{{ show2 }}"
+                                    position="bottom"
+                                    custom-style="height: 50%;"
+                                    >
+                                        <van-area 
+                                        wx:if="{{flag2}}"
+                                        area-list="{{ areaList }}" value="110102" bind:confirm="finish_choice_Area"
+                                        bind:cancel="close_show_Area"
+                                        />       
+                                    </van-popup>
+                                </view>
+                                <view style="width: 12%;">
+                                    <van-icon name="{{same?'arrow':''}}" size="33rpx" color="rgb(135,135,135)"/>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+                <block wx:else="">
+                    <view wx:if="{{region}}" style="display: flex;height: 85rpx;">
+                        <view style="width: 30%;height: 100%;">
+                            <van-field
+                                name="region"
+                                required
+                                readonly                       
+                                label="地区"
+                            />
+                        </view>
+                        <view style="width: 70%;height: 100%;display: flex;align-items: center;font-size: 28.5rpx;">
+                            <view style="color:rgb(80,80,80);width:100%;height: 100%; display: flex;align-items: center; justify-content: space-between;">
+                                <view style="width: 88%;">
+                                    <input bindtap="{{same?'show_Area':''}}"  placeholder="{{same?'请选择所在地区':''}}" placeholder-style="color:rgb(200,200,200)" value="{{region}}" style="font-size: 28rpx;" disabled />
+                                    <van-popup
+                                    show="{{ show2 }}"
+                                    position="bottom"
+                                    custom-style="height: 50%;"
+                                    >
+                                        <van-area 
+                                        wx:if="{{flag2}}"
+                                        area-list="{{ areaList }}" value="110102" bind:confirm="finish_choice_Area"
+                                        bind:cancel="close_show_Area"
+                                        />       
+                                    </van-popup>
+                                </view>
+                                <view style="width: 12%;">
+                                    <van-icon name="{{same?'arrow':''}}" size="33rpx" color="rgb(135,135,135)"/>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+
+                </block>
+
+               
+    
+                
+                <van-field
+                    model:value="{{ wx_code }}"
+                    name="wx_code"
+                    clearable
+                    readonly='{{!same}}'
+                    title-width="25%"
+                    label="微信号"
+                    icon="{{same?'question-o':''}}"
+                    placeholder="{{same?'非必填':''}}"
+                    bind:blur="reData"
+                />
+
+                <block wx:if="{{same}}">
+                    <van-field
+                        model:value="{{ qq_code ? qq_code: '' }}"
+                        name="qq_code"
+                        clearable
+                        readonly='{{!same}}'
+                        title-width="25%"
+                        label="QQ号"
+                        icon="{{same?'question-o':''}}"
+                        placeholder="{{same?'非必填':''}}"
+                        bind:blur="reData"
+                    />
+                </block>
+                <block wx:else="">
+                    <van-field
+                        wx:if="{{qq_code}}"
+                        model:value="{{ qq_code }}"
+                        name="qq_code"
+                        clearable
+                        readonly='{{!same}}'
+                        title-width="25%"
+                        label="QQ号"
+                        icon="{{same?'question-o':''}}"
+                        placeholder="{{same?'非必填':''}}"
+                        bind:blur="reData"
+                    />
+                </block>
+               
+
+                <block wx:if="{{same}}">
+                    <van-field  
+                        model:value="{{ phone ? phone : ''}}"
+                        name="phone"
+                        required
+                        clearable
+                        readonly='{{!same}}'
+                        title-width="25%"
+                        label="联系电话"
+                        icon="{{same?'question-o':''}}"
+                        placeholder="{{same?'请输入联系电话':''}}"
+                        bind:blur="reData"
+                    />
+                </block>
+                <block wx:else="">
+                    <van-field
+                        wx:if="{{phone}}"    
+                        model:value="{{ phone }}"
+                        name="phone"
+                        required
+                        clearable
+                        readonly='{{!same}}'
+                        title-width="25%"
+                        label="联系电话"
+                        icon="{{same?'question-o':''}}"
+                        placeholder="{{same?'请输入联系电话':''}}"
+                        bind:blur="reData"
+                    />
+                </block>
+
+                
+
+                <van-field
+                    model:value="{{ introduce }}"
+                    name="introduce"
+                    clearable
+                    readonly='{{!same}}'
+                    title-width="25%"
+                    type="textarea"
+                    maxlength="{{same?'80':''}}"
+                    input-align="left"
+                    show-word-limit
+                    autosize
+                    label="个人简介"
+                    placeholder="{{same?'请输入内容':'此人很懒，什么也没留下...'}}"
+                    bind:blur="reData"
+                />
+            </view>
+        </van-cell-group>
+    </view>
+    <!-- 完成修改的按钮部分 -->
+    <view class="btn" bindtap="{{same?'finish':''}}">
+        <button wx:if="{{modify}}" type="primary" plain style="border-radius: 18rpx;">完成设置</button>
+    </view>
+    <!-- 底部logo -->
+    <FtView style="bottom: 0rpx; position:fixed; margin-left: 200rpx;"></FtView>
+</view>
+
+
+
+

@@ -1,0 +1,17 @@
+<view class="wrapper">
+    <text class="text" data-text="{{randomResult}}">{{randomResult}}</text>
+    <view class="form">
+        <view class="pointsize">
+            <input bindinput="getMinNum" style="width:auto;height: 70rpx;"value="{{input_min}}" name="minNum" placeholder=" 请输入起点数:默认为1 🍰"></input>
+        </view>
+        <view class="pointsize">
+            <input bindinput="getMaxNum" style="height: 70rpx;" name="maxNum" value="{{input_max}}" placeholder=" 请输入终点数:默认为100 🍭"></input>
+        </view>
+        <view>
+            <button style="margin-top:20rpx;width:90%;border-radius: 30rpx;" bindtap="startRandom" disabled='{{isDisabledStart}}'>开始🍅</button>
+        </view>
+        <view>
+            <button style="margin-top:20rpx;width:90%;border-radius: 30rpx;" bindtap="stopRandom" disabled='{{isDisabledStop}}'>停止🍦</button>
+        </view>
+    </view>
+</view>

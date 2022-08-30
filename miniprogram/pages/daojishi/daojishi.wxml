@@ -1,0 +1,52 @@
+<view  class="out">
+    <view class="scv" style="position: relative;margin: auto;width: 720rpx;height: 330rpx;border-radius: 30rpx;">
+        <image style="border-radius: 30rpx;width: 100%;height: 100%;" src="/images/ddl/lunbotu.jpg" mode="widthFix"></image>
+        <!-- 跳转计时页面 -->
+        <view style="position: absolute;width:450rpx;height: 80rpx;bottom: 8rpx;left: 30rpx;">
+            <view class="countdown-item">
+                <view class="countdown-title">
+                    <block>
+                        <text class='tui-conutdown-box'>{{days}}</text>
+                        <text class="countdown-text">天</text>
+                        <text class='tui-conutdown-box'>{{hours}}</text>
+                        <text class="countdown-text">时</text>
+                        <text class='tui-conutdown-box'>{{minutes}}</text>
+                        <text class="countdown-text">分</text>
+                        <text class='tui-conutdown-box'>{{seconds}}</text>
+                        <text class="countdown-text">秒</text>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="input" style="width: 100%;height: 100%;margin-top: 20rpx;align-items: center;text-align: center;justify-content: center;margin: auto;">
+        <form bindsubmit="addTime">
+            <view style="width: 90%;height: 100%;background-color: rgb(192, 223, 238);align-items: center;text-align: center;justify-content: center;margin: auto;border-radius: 20rpx;">
+                <input name="name" class="container" placeholder="请输入您要添加的事件名称"></input>
+            </view>
+
+            <view style="height: 100%;width: 90%;background-color: rgb(192, 223, 238);align-items: center;text-align: center;justify-content: center;margin: auto;margin-top: 10rpx;border-radius: 20rpx;">
+                <input value="{{afterchoose_time}}" bindtap="show_timechoose" name="ddl" class="container" placeholder="点击选择时间"></input>
+            </view>
+            
+            <!-- 时间选择器 -->
+            <!-- <van-datetime-picker
+                wx:if="{{show_timechoose==true}}"
+                type="datetime"
+                value="{{ currentDate }}"
+                min-date="{{ minDate }}"
+                max-date="{{ maxDate }}"
+                show-toolbar="{{false}}"
+                bind:input="onInput"
+            /> -->
+
+            <view style="margin-top: 200rpx;height: 100%;width: 90%;align-items: center;text-align: center;justify-content: center;margin: auto;margin-top: 20rpx;border-radius: 20rpx;">
+                <button style="border-radius: 30rpx;background-color: rgb(119, 169, 235);width: 80%;height: 100%;" type="primary" form-type="submit">提交</button>
+            </view>
+        </form>
+    </view>
+    <view class="btn">
+        <button type="default" style="width: 80%;border-radius: 30rpx;" bindtap="todjs">查看历史倒计时 </button>
+    </view>
+</view>

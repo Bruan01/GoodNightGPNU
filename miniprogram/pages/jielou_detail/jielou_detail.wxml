@@ -1,0 +1,83 @@
+<wxs module="tools" src="/util/filter.wxs"/>
+
+
+<view class="big_box" style="height: 100%; position: relative;">
+    <view style="height: 5%;width: 100%;border-bottom: 1rpx rgba(0, 0, 0, 0.1) solid;font-size: 40rpx;text-align: center;display: flex;justify-content: center;align-items: center;">
+        <view>🔔畅所欲言</view>
+    </view>
+
+    <view style="height: 8%;width: 94%;margin:2% 3%;border-radius: 20rpx; border: 1rpx rgb(0, 0, 0,0.2) solid;display: flex;align-items: center;">
+        <view style="height: 60%;width: 10%;margin-left: 3%;border-radius: 10rpx;">
+            <image style="width: 100%;height: 100%; border-radius: 10rpx;" src="{{author_photo}}" ></image>
+        </view>
+        <view style="height: 50%;width: 83%;margin: 0 2%;font-size: 45rpx;">{{huati_data[0]._title}}</view>
+    </view>
+
+    <scroll-view scroll-y scroll-top="{{scroll_top}}" scroll-with-animation  style="height: 83%;width: 100%;border-bottom: 1rpx rgba(0, 0, 0, 0.1) solid;" bindscroll="start_scroll" bindscrolltoupper="stop_scroll">
+
+    <view style="height: 90%;">
+        <view wx:for="{{huati_data[0]._detail}}" wx:key="index" catchlongpress="delete_huati_hd" data-index="{{index}}" style="height: auto;width: 93%;margin: 0% 4.5%;border-radius: 20rpx; display: flex;flex-direction: column;">
+            <view style="height: 10%;width: 100%;">
+                <view style="margin-left:3%;font-size: 25rpx;opacity: 50%">第{{index+1}}楼</view>
+            </view>
+            <view style="height: auto;width: 100%;border-radius: 20rpx; border: 1rpx rgba(0,0,0,0.1) solid;display: flex;">
+                <view style="height: 60%;width: 10%;margin-left: 3%;border-radius: 10rpx;margin-top: 1%;">
+                    <image style="height: 70rpx;width: 70rpx; border-radius: 10rpx;"  src="{{item.pic}}"></image>
+                </view>
+                <view style="height: auto;width: 85%;margin-left: 2%;font-size: 35rpx;background-color:rgba(212, 241, 241, 0.2);border-radius: 20rpx;display: flex;align-items: center;justify-items: center;">
+                    <view style="margin-left: 3%;">{{item.nr}}</view>    
+                </view>
+            </view>
+            <view style="height: 10%;width: 100%;">
+                <view style="margin-left:85%;font-size: 25rpx;opacity: 50%">{{tools.timeChn(item.time,2)}}</view>
+            </view>
+        </view>
+
+
+        <!-- 底部 -->
+        <view style="height: 7%; text-align: center;">
+            <view>没有更多了~</view>
+        </view>
+    </view>
+        
+
+    </scroll-view>
+
+
+
+
+
+     <!-- 发布小球 -->
+    <view style="position: absolute;top:68.5%;left: 84.5%;height: 60rpx;width: 60rpx;border-radius:100%;"  catchtap="showPopup">
+        <image src="/images/fabu.png" style="width: 100%;height: 100%;"></image>
+    </view>
+
+     <!-- 置顶小球-->
+    <view wx:if="{{scroll_start}}" style="position: absolute;top:75%;left: 85%;height: 60rpx;width: 60rpx;border-radius:100%;"catchtap="zhiding">
+        <image src="/images/zhiding.png" style="width: 100%;height: 100%;"></image>
+    </view>
+
+     <!-- 置底小球-->
+     <view wx:if="{{scroll_start}}" style="position: absolute;top:81%;left: 85%;height: 60rpx;width: 60rpx;border-radius:100%;"catchtap="zhidi">
+        <image src="/images/zhidi.png" style="width: 100%;height: 100%;"></image>
+    </view>
+
+
+    <!-- 弹出层 -->
+    <van-popup show="{{ show }}" position="bottom" custom-style="height: 45%;" bind:close="onClose" round>
+        <view style="height: 100%;width: 100%;">
+            <view style="height: 13%;width: 100%;color: rgb(58, 164, 250);font-size: 45rpx;text-align: center; border-bottom:rgb(153, 145, 145,0.3) 1rpx solid;">--互动--</view>
+            <view style="height: 13%;width: 100%;font-size: 38rpx;color: rgb(58, 164, 250);margin-top: 2%; margin-left: 2%;">话题互动：</view>
+            <view style="height: 45%;width: 90%;margin: 0 4.5%;border-radius: 20rpx; border:rgb(153, 145, 145) 1rpx solid"> 
+                <textarea style="width: 96%;margin:0 2%;font-size: 36rpx;" maxlength="90" auto-height cursor-spacing="100" 	confirm-type="done" placeholder="字数不超过90词" bindinput="get_textarea" value="{{huati_hd}}"></textarea> 
+            </view>
+            <view style="margin-bottom: 3%; height: 20%;width: 90%;margin: 0 4.5%;display: flex;margin-top: 2%;">
+                <button style="height: 89%;width: 25%;" type="default" 	plain catchtap="onClose">取消</button>
+                <button style="height: 89%;width: 25%;" type="primary" 	plain catchtap="fabu">发布</button>
+            </view>
+        </view>
+    </van-popup>
+</view>
+
+
+   

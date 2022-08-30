@@ -1,0 +1,375 @@
+<wxs module="tools" src="/util/filter.wxs"/>
+
+
+
+<!-- 作品栏 -->
+<!-- 作品栏 -->
+<!-- 作品栏 -->
+<!-- 作品栏 -->
+<!-- 作品栏 -->
+<!-- 数据栏选择 -->
+<Tabs bindchange="changetitle"></Tabs>
+
+
+  
+<!-- 说说显示所有 -->
+<view class="A">
+  <!-- 下面为数据空白时的图片 -->
+  <view class="kong1" style="display:flex;justify-content:center" >
+    <image wx:if="{{kong==true && ss_xx.length==0}}"  class="kong1"
+    src="cloud://wan-an-gpnu-4gm1hsj6bb4b58fb.7761-wan-an-gpnu-4gm1hsj6bb4b58fb-1309987324/sys/shousuokong.png" mode="widthFix" 
+    style="width:500rpx;margin-top:100rpx;height:auto;" />
+  </view>
+
+
+  <!-- 下面为加载时的loading图片 -->
+  <view class="kong1" style="display:flex;justify-content:center" >
+    <image wx:if="{{kong==false && ss_xx.length==0}}"  class="kong1"
+    src="/images/loading2.gif" mode="widthFix" 
+    style="width:100rpx;margin:250rpx 0rpx;height:auto" />
+  </view>
+
+
+  <!-- 加个倒序 动态展示 -->
+  <view class="daoxu" >
+    <view class="B" wx:for="{{ss_xx}}" wx:key="index" wx:for-item="item0" wx:for-index="index0">
+
+
+
+
+      <!-- if朋友圈动态-->
+      <block wx:if="{{item0.flag==0}}">
+      
+        <!-- B1为头像 -->
+        <view class="B1" bindtap="touxiangxiangqing" >
+          <image wx:if="{{true}}" class="photo" 
+          src="{{item0.shuoshuo_xingxi.userphoto}}" mode="widthFix" ></image>
+          <image wx:else class="photo" src="/images/niming.png" mode="widthFix" ></image>
+        </view>
+
+        <!-- B2为其他内容 -->
+        <view class="B2" bindtap="xiangqing" data-id="{{item0._id}}" data-love="{{item0.love}}" data-index="{{index0}}">
+
+          <!-- 第一部分  用户名字及动态类型图标-->
+          <view class="B21" >
+            <!-- 用户名 -->
+            <view class="username">
+                <view wx:if="{{true}}" class="name" 
+              style="font-size:90%;margin-top:5rpx;color:#26688f" >
+                {{item0.shuoshuo_xingxi.username}}
+              </view>
+              <view wx:else class="name" 
+              style="font-size:90%;margin-top:5rpx;color:#26688f" >
+                {{"匿名用户"}}
+              </view>
+            </view>
+
+            <!-- 动态类型图标 -->
+            <view class="dongtaitype">
+                <!-- 知识-科技 -->
+                <image src="/images/fenlei/keji.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==1&&item0.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-财经 -->
+                <image src="/images/fenlei/caijing.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==1&&item0.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-法知 -->
+                <image src="/images/fenlei/fazhi .png" wx:if="{{item0.shuoshuo_xingxi.bankuai==1&&item0.shuoshuo_xingxi.subclass==2}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-文学 -->
+                <image src="/images/fenlei/wenxue.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==1&&item0.shuoshuo_xingxi.subclass==3}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-艺术 -->
+                <image src="/images/fenlei/yishu.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==1&&item0.shuoshuo_xingxi.subclass==4}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-其他 -->
+                <image src="/images/fenlei/qitazhishi.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==1&&item0.shuoshuo_xingxi.subclass==5}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 表白墙-表白 -->
+                <image src="/images/fenlei/biaobai.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==2&&item0.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 表白墙-捞人 -->
+                <image src="/images/fenlei/laoren.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==2&&item0.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 表白墙-卖舍友 -->
+                <image src="/images/fenlei/maisheyou.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==2&&item0.shuoshuo_xingxi.subclass==2}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-运动 -->
+                <image src="/images/fenlei/yundong.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==3&&item0.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-学习 -->
+                <image src="/images/fenlei/xuexi.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==3&&item0.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-逛街 -->
+                <image src="/images/fenlei/guangjie.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==3&&item0.shuoshuo_xingxi.subclass==2}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-旅游 -->
+                <image src="/images/fenlei/lvyou.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==3&&item0.shuoshuo_xingxi.subclass==3}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-游戏 -->
+                <image src="/images/fenlei/youxi.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==3&&item0.shuoshuo_xingxi.subclass==4}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 万能代-代拿 -->
+                <image src="/images/fenlei/daina.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==4&&item0.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 万能代-代跑 -->
+                <image src="/images/fenlei/daipao.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==4&&item0.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 吐槽 -->
+                <image src="/images/fenlei/tucao.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==5&&item0.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 寻物-寻失 -->
+                <image src="/images/fenlei/xunshi.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==6&&item0.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 寻物-觅主 -->
+                <image src="/images/fenlei/mizhu.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==6&&item0.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 闲鱼-出售 -->
+                <image src="/images/fenlei/mai0.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==7&&item0.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 闲鱼-欲购 -->
+                <image src="/images/fenlei/mai1.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==7&&item0.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 其他 -->
+                <image src="/images/fenlei/qita.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==8&&item0.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 休闲 -->
+                <image src="/images/fenlei/xiuxian.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==0&&item0.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+            </view>
+          </view>
+
+          <!-- 第二部分 动态内容文字-->
+          <view class="B22" >{{item0.shuoshuo_xingxi.nr}}
+          </view>
+
+          <!-- 第三部分 动态内容图片-->
+          <view class="B23" > 
+
+            <!-- 第一种 单张图片-->
+            <view wx:if="{{item0.shuoshuo_xingxi.tp.length==1}}" class="img1" style="width: 100%;">
+              <image lazy-load="true" class="danzhang" src="{{item0.shuoshuo_xingxi.tp[0]}}" style="width: 350rpx;height:auto;" mode="widthFix"/>
+            </view>
+
+            <!-- 第二种 多张图片-->
+            <view wx:if="{{item0.shuoshuo_xingxi.tp.length>1}}" class="img2" style="width: 100%;">
+              <view class="xunhuan" wx:for="{{item0.shuoshuo_xingxi.tp}}" wx:key="index" 
+              style="width: 193rpx;height:193rpx" wx:for-item="item1" >
+                <image lazy-load="true" class="duozhang" src="{{item1}}" style="width: 180rpx;height:180rpx;margin-right:8rpx;margin-bottom:8rpx" mode="aspectFill"/>
+              </view>
+            </view>
+
+          </view>
+
+          <!-- 第四部分  （时间）及（点赞评论浏览）-->
+          <view class="B24"  >
+            <!-- 下面显示时间 -->
+            <view class="time" style="font-size:78%;color:#B0B0B0;font-weight:lighter;">{{tools.timeChn(item0._time)}}
+            </view>
+
+            <!-- 下面显示点赞评论浏览 -->
+            <view class="dzpl" style="margin-right:20rpx;display:flex;" >
+
+              <!-- 下面显示点赞， -->
+              <view class="love" style="display:flex" catchtap="dianzan" data-index="{{index0}}" data-id="{{item0._id}}">
+                <image lazy-load="true" wx:if="{{!item0.love}}" src="/images/icon/zan1.png" style="width:40rpx;height:40rpx" />
+                <image lazy-load="true" wx:if="{{item0.love}}" src="/images/icon/zan2.png" style="width:40rpx;height:40rpx" />
+                <view class="dianzannb" style="font-size:78%;color:#656565;font-weight:lighter;margin-right:10rpx;">{{item0.shuoshuo_xingxi.dianzannb}}
+                </view>
+              </view>
+
+              <!-- 下面显示回复， -->
+              <image lazy-load="true" src="/images/icon/pinglun.png" style="margin-left:10rpx;width:40rpx;height:40rpx" />
+              <view class="huifunb" style="font-size:78%;color:#656565;margin-left:10rpx;font-weight:lighter">{{item0.shuoshuo_xingxi.huifunb}}
+              </view>
+
+              <!-- 下面显示浏览， -->
+              <image lazy-load="true" src="/images/icon/look.png" style="margin-left:10rpx;width:40rpx;height:40rpx" />
+              <view class="dianzannb" style="font-size:78%;color:#656565;font-weight:lighter">{{item0.shuoshuo_xingxi.look}}
+              </view>
+              
+            </view>
+          </view>
+
+        </view>
+
+
+      </block>
+
+
+
+
+
+
+
+      <!-- else 话题-->
+      <block wx:else>
+        <!-- 文章类布局 -->
+        <view class="topic" bindtap="xiangqing" data-id="{{item0._id}}" data-love="{{item0.love}}" data-index="{{index0}}">
+
+          <!-- 标题 用户名 时间 -->
+          <view class="topicTitLik">
+            <!-- 标题 -->
+            <text class="title" style="line-height: 0.55cm; opacity: 0.75;">{{item0.shuoshuo_xingxi.title}}
+            </text>
+
+            <view class="like"  >
+              <!-- 用户名 -->
+              <view class="Name" style="font-size: 95%; color: #26688f;">
+              {{item0.shuoshuo_xingxi.username}}
+              </view>
+
+              <!-- 动态类型图标 -->
+              <view class="dongtaitype">
+                <!-- 知识-科技 -->
+                <image src="/images/fenlei/keji.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==1&&item0.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-财经 -->
+                <image src="/images/fenlei/caijing.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==1&&item0.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-法知 -->
+                <image src="/images/fenlei/fazhi .png" wx:if="{{item0.shuoshuo_xingxi.bankuai==1&&item0.shuoshuo_xingxi.subclass==2}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-文学 -->
+                <image src="/images/fenlei/wenxue.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==1&&item0.shuoshuo_xingxi.subclass==3}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-艺术 -->
+                <image src="/images/fenlei/yishu.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==1&&item0.shuoshuo_xingxi.subclass==4}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-其他 -->
+                <image src="/images/fenlei/qitazhishi.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==1&&item0.shuoshuo_xingxi.subclass==5}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 表白墙-表白 -->
+                <image src="/images/fenlei/biaobai.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==2&&item0.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 表白墙-捞人 -->
+                <image src="/images/fenlei/laoren.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==2&&item0.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 表白墙-卖舍友 -->
+                <image src="/images/fenlei/maisheyou.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==2&&item0.shuoshuo_xingxi.subclass==2}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-运动 -->
+                <image src="/images/fenlei/yundong.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==3&&item0.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-学习 -->
+                <image src="/images/fenlei/xuexi.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==3&&item0.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-逛街 -->
+                <image src="/images/fenlei/guangjie.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==3&&item0.shuoshuo_xingxi.subclass==2}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-旅游 -->
+                <image src="/images/fenlei/lvyou.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==3&&item0.shuoshuo_xingxi.subclass==3}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-游戏 -->
+                <image src="/images/fenlei/youxi.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==3&&item0.shuoshuo_xingxi.subclass==4}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 万能代-代拿 -->
+                <image src="/images/fenlei/daina.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==4&&item0.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 万能代-代跑 -->
+                <image src="/images/fenlei/daipao.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==4&&item0.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 吐槽 -->
+                <image src="/images/fenlei/tucao.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==5&&item0.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 寻物-寻失 -->
+                <image src="/images/fenlei/xunshi.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==6&&item0.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 寻物-觅主 -->
+                <image src="/images/fenlei/mizhu.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==6&&item0.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 闲鱼-出售 -->
+                <image src="/images/fenlei/mai0.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==7&&item0.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 闲鱼-欲购 -->
+                <image src="/images/fenlei/mai1.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==7&&item0.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 其他 -->
+                <image src="/images/fenlei/qita.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==8&&item0.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 休闲 -->
+                <image src="/images/fenlei/xiuxian.png" wx:if="{{item0.shuoshuo_xingxi.bankuai==0&&item0.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+              </view>
+
+
+
+              <!-- 下面显示时间 -->
+              <view class="time" style="font-size:95%;color:#B0B0B0;font-weight:lighter;">{{tools.timeChn(item0._time)}}
+              </view>
+            </view>
+
+          </view>
+
+          <!-- 图片和浏览 -->
+          <view class="topicPicNam">
+            <!-- 图片 -->
+            <view class="pic">
+              <image src="{{item0.shuoshuo_xingxi.tp[0]}}" mode="aspectFit">
+              </image>
+            </view>
+
+            <!-- 下面浏览 -->
+            <view class="looknb">{{item0.shuoshuo_xingxi.look}}阅读</view>
+            
+          </view>
+
+        </view>
+      </block>
+
+    </view><!-- 循环遍历动态数组数据 -->
+  </view>
+  <!-- 底部 -->
+  <view class="loading">
+    <van-loading size="24px" type="{{loading ? 'spinner':'node'}}"  color="#1989fa">
+        <view wx:if="{{loading}}">加载中...</view>
+        <view wx:else="">没有更多了~</view>
+    </van-loading>
+  </view>
+
+</view>
+
+

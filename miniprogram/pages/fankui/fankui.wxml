@@ -1,0 +1,47 @@
+
+<view style="width: 100%; height: 100%;">
+  <form bindsubmit="formsubmit">
+
+    <!-- 填写反馈 -->
+    <view
+    style="margin: 3%; height: 26%; border: rgb(235, 234, 234) 2rpx solid; border-radius: 30rpx;">
+      <textarea maxlength="150" name="text" placeholder="请输入反馈内容..." style="margin: 3% 3%; height:88%; width: 94%; opacity: 0.75;"></textarea>
+    </view>
+
+    <!-- 选择反馈类型 -->
+    <view
+      style="margin: 3%; width: 94%; height: 20%; border: rgb(235, 234, 234) 2rpx solid;  display: flex; flex-direction: column; border-radius: 20rpx;">
+      <view style="margin: 3%;">请选择反馈类型</view>
+
+      <radio-group name="radio" style="margin: 3%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+
+        <view>
+          <view><radio value="程序bug">程序bug</radio></view>
+          <view style="margin-top: 30rpx;"><radio value="内容意见">内容意见</radio></view>
+        </view>
+
+        <view>
+          <view><radio value="功能建议">功能建议</radio></view>
+          <view style="margin-top: 30rpx;"><radio value="侵权举报">侵权举报</radio></view>
+        </view>
+
+        <view>
+          <view><radio value="网络问题">网络问题</radio></view>
+          <view style="margin-top: 30rpx;"><radio value="其他">其他</radio></view>
+        </view>
+
+      </radio-group>
+    </view>
+
+    <!-- 提交按钮 -->
+    <view style="margin-top: 8%; display: flex; align-items: center; justify-content: center;">
+      <button type="primary" form-type="submit" style="width: 300rpx;background: rgb(120, 171, 238); ">提交</button>
+    </view>
+
+
+  </form>
+</view>
+
+
+      
+      

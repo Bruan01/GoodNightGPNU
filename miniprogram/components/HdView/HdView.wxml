@@ -1,0 +1,24 @@
+<!-- logo 客服 -->
+<view class="header">
+  <view class="container hdCon">
+  
+    <navigator open-type="switchTab" url="/pages/index/index" class="logo">
+      <image class="hdpic" src="/images/logo2.jpg" mode="heightFix"></image>
+    </navigator>
+
+    <view class="bg" style="background-color:#ffffff;width:70%;height:100%; margin-top: 1px; border-radius: 45rpx;" >
+      <view class="search" >
+        <view class="search" style="display:flex;border-radius: 45rpx;overflow: hidden;background-color:#F3F4F9;margin:0 5rpx;width:510rpx">
+          <input type="text" placeholder="🔍搜索一下吧..." placeholder-style="color:#B0B2BF;" confirm-type="search" value="{{search}}"
+          style="width:100%;margin:10rpx 25rpx;font-size:85%" maxlength="20" bindconfirm="search" ></input>
+        </view>
+      </view>
+    </view>
+
+    <view class="kefu">
+      <button class="btn" open-type="contact"></button>
+      <image class="hdpic" src="/images/kefu.png" mode="heightFix"></image>
+    </view>
+
+  </view>
+</view>

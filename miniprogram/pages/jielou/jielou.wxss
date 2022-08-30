@@ -1,0 +1,15 @@
+page{
+  height: 100%;
+}
+.big_box{
+  height: 100%;
+  width: 100%;
+}
+ 
+
+
+
+
+
+/* 底部 */
+.loading{text-align: center;padding:30rpx 0}

@@ -1,0 +1,349 @@
+<wxs module="tools" src="/util/filter.wxs"/>
+
+<!-- 图片背景 -->
+<view class="out" style="background-image: url('https://tse1-mm.cn.bing.net/th/id/R-C.05e5c71f1dd18e33c1190a683fe790be?rik=YPJRvFEAz8hGnw&riu=http%3a%2f%2fup.ipaddesk.com%2fpic_360%2fb8%2f21%2fc7%2fb821c769bae3e264ede9b8ba14c8472a.jpg&ehk=SLA6BGoyc84lsP52tyESaAmYLX3py%2fmfyiLyNCXdLts%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1'); width: 100% ;height: 100%;position: fixed;">
+
+  <!-- 规则球 -->
+  <view style="height: 7%; margin-left: 3%; margin-top: 3%; z-index: -1; position: fixed;">
+    <image bindtap="guize" src="/images/plp/guize.png" style="height: 80rpx; width: 80rpx;"></image>
+  </view>
+  
+  <!-- 规则文案 -->
+  <view wx:if="{{xianshiguize}}" style="z-index: -1; position: fixed; background-color: rgb(211, 254, 255);" class="tip">
+    <view style="height: 100%;">
+    <!-- topic -->
+    <view  style="height: 10%; font-size: 30rpx; border-radius: 15px; width: 550rpx; display: flex; justify-content: space-between; align-items: center;">
+      <view style="margin-left: 150rpx;">🦐漂流瓶Tips🐳</view>
+      <text bindtap="guize">✖️</text>
+    </view>
+
+    <scroll-view scroll-y="true"  style="height:87%;">
+        <!--捡瓶子的表单 -->
+            <!-- pic -->
+            <view  style=" font-size: 30rpx; border-radius: 15px; width: 550rpx; ">
+              <view  style="margin-left: 10%;width: 80%;height: 80%;border-radius: 20rpx;" >
+                <text decode='nbsp'>
+                  1.大家请注意言论规范，请勿发表敏感言论😺~\n
+                  2.点击左侧'捞一个'可以捞到男生发表的漂流瓶~🌊\n
+                  点击右侧'捞一个'可以捞到女生发表的漂流瓶~🌴\n
+                  3.点击'扔一个'可以扔出自己的漂流瓶，不过要先完成性别验证哦~🍉\n
+                  4.点击'历史'可以查看自己捡到的瓶子,点击瓶子可以查看详情~🐢\n
+                  5.点击'小球'可以隐藏提示栏~☀️\n
+                </text>
+              </view>
+          </view>
+    </scroll-view>
+    <view style="height: 3%;"></view>
+
+    </view>
+  </view>
+
+
+<!-- 捡瓶子系列 =========================================================================-->
+
+ <!--  捡瓶子 男  -->
+ <view class="ruleZhezhao {{pickUpBottle_man?'isRuleShow':'isRuleHide'}}">
+    <view class='ruleZhezhaoContent'>
+      <view style="height: 100%;">
+      
+        <!-- 关闭按钮 -->
+        <view style=" height: 8%; ">
+          <text class='ruleHide' bindtap='hideRule'>✖</text>
+        </view>
+
+        <!--捡瓶子的表单 -->
+        <scroll-view scroll-y="true" style="height: 77%;">
+              <!-- 提示语 -->
+              <view  wx:if="{{strange==false&&rubbish==false}}" wx:if="{{flag_show}}" style="font-size: 30rpx; ;background-color: #fcfcfc;border-radius: 15px;height:auto; width: 550rpx; text-align: center; margin-bottom: 15rpx;">
+                远处漂来一个瓶子，打开后发现:..
+              </view>
+              <!-- text -->
+              <view wx:if="{{strange==false&&rubbish==false}}" wx:if="{{flag_show}}" style="font-size: 30rpx; ;background-color: #fcfcfc;border-radius: 15px;height:auto; width: 550rpx; text-align: center; padding: 10rpx;">
+                内容：{{nr_show}}
+              </view>
+              <!-- pic -->
+              <view  wx:if="{{strange==false&&rubbish==false}}" wx:if="{{flag_show}}" style=" border: rgb(244, 244, 247) 1rpx solid;font-size: 45rpx; background-color: #fcfcfc;border-radius: 15px;height: 500rpx; width: 550rpx; margin-top: 20rpx ;">
+                <view  style=" margin: 10% 10% ;width: 80%;height: 80%;border-radius: 20rpx;" >
+                  <image src="{{pic_show!=''?pic_show:'/images/plp/giphy_cat.png'}}" bindtap="preview" data-havesrc="{{pic_show}}" mode="aspectFill" style="width:100%; height: 100%;border-radius: 20rpx;margin:0">
+                  </image>
+                </view>
+              </view>
+              <!-- 捞到垃圾 -->
+              <view  wx:if="{{rubbish==true}}" style=" border: rgb(244, 244, 247) 1rpx solid;font-size: 45rpx; background-color: #fcfcfc;border-radius: 15px;height: 500rpx; width: 550rpx; margin-top: 20rpx ;">
+                <view style="text-align: center;margin: 10rpx;font-size: smaller;color: cornflowerblue;">远处漂来一个奇怪的东西</view>
+                <view style=" margin: 10% 10% ;width: 80%;height: 80%;border-radius: 20rpx;" >
+                  
+                  <image src="{{rubbish_pic!=''?rubbish_pic:''}}" mode="aspectFill" style="width:80%; height: 80%;border-radius: 20rpx;margin-left:10%">
+                  </image>
+                </view>
+              </view>
+              <!-- 捞到奇怪的东西 -->
+              <view  wx:if="{{strange==true}}" style=" border: rgb(244, 244, 247) 1rpx solid;font-size: 45rpx; background-color: #fcfcfc;border-radius: 15px;height: 500rpx; width: 550rpx; margin-top: 20rpx ;">
+                <view style="text-align: center;font-size: smaller;color: cornflowerblue;">来自大自然的馈赠</view>
+                <view style=" margin: 10% 10% ;width: 80%;height: 80%;border-radius: 20rpx;" >
+                
+                  <image src="{{strange_pic!=''?strange_pic:''}}" mode="aspectFill" style="width:80%; height: 80%;border-radius: 20rpx;margin-left:10%">
+                  </image>
+                </view>
+              </view>
+        </scroll-view>
+ 
+        <!-- 下一个 -->
+        <view wx:if="{{btn_flag}}" style="margin-left: 15%;text-align: center;width: 70%;margin-bottom:5%;height: 10%;border-radius: 25rpx;background: rgb(255, 255, 255); display: flex;align-items: center;justify-content: center;"bindtap="nextbottle">
+            <text>再捞一个👈</text>
+        </view>
+
+      </view>
+    </view>
+  </view>
+  <!--  end  -->
+
+
+  <!--  捡瓶子 女  -->
+  <view class="ruleZhezhao {{pickUpBottle_woman?'isRuleShow':'isRuleHide'}}">
+    <view class='ruleZhezhaoContent'>
+      <view style="height: 100%;">
+      
+        <!-- 关闭按钮 -->
+        <view style=" height: 8%; ">
+          <text class='ruleHide' bindtap='hideRule'>✖</text>
+        </view>
+
+        <!--捡瓶子的表单 -->
+        <scroll-view scroll-y="true" style="height: 77%;">
+              <!-- 提示语 -->
+              <view  wx:if="{{strange==false&&rubbish==false}}" wx:if="{{flag_show}}" style="font-size: 30rpx; ;background-color: #fcfcfc;border-radius: 15px;height:auto; width: 550rpx; text-align: center; margin-bottom: 15rpx;">
+                远处漂来一个瓶子，打开后发现:..
+              </view>
+              <!-- text -->
+              <view wx:if="{{strange==false&&rubbish==false}}" wx:if="{{flag_show}}" style="font-size: 30rpx; ;background-color: #fcfcfc;border-radius: 15px;height:auto; width: 550rpx; text-align: center; padding: 10rpx;">
+                内容：{{nr_show}}
+              </view>
+              <!-- pic -->
+              <view  wx:if="{{strange==false&&rubbish==false}}" wx:if="{{flag_show}}" style=" border: rgb(244, 244, 247) 1rpx solid;font-size: 45rpx; background-color: #fcfcfc;border-radius: 15px;height: 500rpx; width: 550rpx; margin-top: 20rpx ;">
+                <view  style=" margin: 10% 10% ;width: 80%;height: 80%;border-radius: 20rpx;" >
+                  <image src="{{pic_show!=''?pic_show:'/images/plp/giphy_cat.png'}}" bindtap="preview" data-havesrc="{{pic_show}}" mode="aspectFill" style="width:100%; height: 100%;border-radius: 20rpx;margin:0">
+                  </image>
+                </view>
+              </view>
+              <!-- 捞到垃圾 -->
+              <view  wx:if="{{rubbish==true}}" style=" border: rgb(244, 244, 247) 1rpx solid;font-size: 45rpx; background-color: #fcfcfc;border-radius: 15px;height: 500rpx; width: 550rpx; margin-top: 20rpx ;">
+                <view style="text-align: center;margin: 10rpx;font-size: smaller;color: cornflowerblue;">远处漂来一个奇怪的东西 </view>
+                <view style=" margin: 10% 10% ;width: 80%;height: 80%;border-radius: 20rpx;" >
+                  
+                  <image src="{{rubbish_pic!=''?rubbish_pic:''}}" mode="aspectFill" style="width:80%; height: 80%;border-radius: 20rpx;margin-left:10%">
+                  </image>
+                </view>
+              </view>
+              <!-- 捞到奇怪的东西 -->
+              <view  wx:if="{{strange==true}}" style=" border: rgb(244, 244, 247) 1rpx solid;font-size: 45rpx; background-color: #fcfcfc;border-radius: 15px;height: 500rpx; width: 550rpx; margin-top: 20rpx ;">
+                <view style="text-align: center;font-size: smaller;color: cornflowerblue;">来自大自然的馈赠</view>
+                <view style=" margin: 10% 10% ;width: 80%;height: 80%;border-radius: 20rpx;" >
+                
+                  <image src="{{strange_pic!=''?strange_pic:''}}" mode="aspectFill" style="width:80%; height: 80%;border-radius: 20rpx;margin-left:10%">
+                  </image>
+                </view>
+              </view>
+        </scroll-view>
+ 
+        <!-- 下一个 -->
+        <view wx:if="{{btn_flag}}" style="margin-left: 15%;text-align: center;width: 70%;margin-bottom:5%;height: 10%;border-radius: 25rpx;background: rgb(255, 255, 255); display: flex;align-items: center;justify-content: center;"bindtap="nextbottle">
+            <text>再捞一个👈</text>
+        </view>
+
+      </view>
+    </view>
+  </view>
+  <!--  end  -->
+
+
+
+
+  <!--  扔瓶子====================================================================== -->
+  <view class="ruleZhezhao {{put_bottle_Show?'isRuleShow':'isRuleHide'}}">
+    <scroll-view scroll-y="true" class='ruleZhezhaoContent'>
+      <!--扔瓶子的表单 -->
+      <text class='ruleHide' bindtap='hide_put_bottle'>✖</text>
+      <!-- text pic -->
+      <view style="z-index: -1;bottom: 120rpx;width: 100%;margin-top: 10%;">
+        <view style="width:690rpx; margin: 20rpx; margin-bottom: 30rpx; ">
+          <!-- text -->
+          <view style="font-size: 30rpx; ;background-color: #fcfcfc;border-radius: 15px;height: auto; width: 550rpx;position: relative; padding: 20rpx 0rpx;">
+            <textarea value="{{info_clear}}" decode placeholder="尽情发挥吧..." auto-height="true" maxlength="200" bindblur="shijiao_nr" style="margin-left: 5%; width: 500rpx;height: 100%;" bindinput="input_nr"  >
+            </textarea>
+          </view>
+          <!-- pic -->
+          <view style="font-size: 45rpx; ;background-color:rgb(255, 247, 152);border-radius: 15px;height: 500rpx; width: 550rpx; margin-top: 20rpx ;">
+            <view  style="margin: auto;width: 80%;height: 400rpx;border-radius: 20rpx;text-align: center;align-items: center;justify-content: center;" bindtap="imgAdding">
+              <view style="width: 100%;height: 50rpx;margin-left: 3rpx;font-size:30rpx;color:cornflowerblue;">
+                点击添加图片..
+              </view>
+              <image src="{{pic}}" mode="aspectFill" style="width:100%; height: 100%;border-radius: 20rpx">
+              </image>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 提交 -->
+      <view wx:if="{{nr!=''}}" class="{{down?'tijiao_1':'tijiao'}}">
+        <!-- 提交 -->
+        <view bindtap="finish" style=" width: 100%;height: 100%;display: flex;font-size: larger;align-items: center;justify-content: center;" >
+          <view>提交</view>
+        </view>
+      </view>
+      <!-- 没有内容无法提交 -->
+      <view wx:if="{{nr==''}}" style=" border-radius: 15px;background-color: rgb(132, 128, 138);width: 80%; height: 100rpx;margin: auto;margin-bottom: 200rpx;margin-top: 10%;">
+        <!-- 提交 -->
+        <view style=" width: 100%;height: 100%;display: flex;font-size: larger;align-items: center;justify-content: center;" >
+          <view >提交</view>
+        </view>
+      </view>
+    </scroll-view>
+
+  </view>
+  <!--  end  -->
+
+
+
+
+
+
+
+  <!-- 历史 ========================================================================-->
+  <view class="ruleZhezhao {{history_Show?'isRuleShow':'isRuleHide'}}">
+
+          <!-- 根据性别判断没点进去前 性别是空 --> 
+            <view wx:if="{{history_is_show==true}}" class='ruleZhezhaoContent'>
+
+              <!-- 固定高宽 -->
+              <view style="height: 100%; width: 100%;">
+                    <!-- 关闭按钮 -->
+                    <view style="height: 7%; display: flex; justify-content: space-between; align-items: center;">
+                      <view style="margin-left: 48%;">历史</view>
+                      <text class='ruleHide' bindtap='hideRule'>✖</text>
+                    </view>
+
+                    <!-- 历史展示 -->
+                    <view style="height: 93%;">
+                      <scroll-view scroll-y="true" style="height: 100%; width: 100%; padding: 0 4%;">
+                            <view style="height: 10rpx;"></view>
+                            <!-- 历史子项目 -->
+                            <view wx:for="{{history_data}}" bindtap="show_history_detail" data-id="{{item.bottle_id}}" wx:key="index" style="font-size: 25rpx;margin-bottom: 40rpx;background-color: #fcfcfc;border-radius: 15px;height: 100rpx; width: 92%; display: flex;align-items: center; position: relative;">
+                                <image src="{{item.pic_show!=''?item.pic_show:'/images/plp/giphy_cat.png'}}" style="margin:20rpx;width: 70rpx;height:70rpx;border-radius: 15px"mode="aspectFill"></image>
+                                <view class="history_text"> {{item.nr_show}} </view>
+
+                                <view data-id="{{item.bottle_id}}" catchtap="delete_history" style="height: 55%; width: 15%; position: absolute;top: 15%;left: 85%; text-align: center;">
+                                  <text>❌</text>
+                                </view>
+
+                                <view style="top:70%; position: absolute;font-size: 15rpx;height: 10rpx; width:15%;left: 85%;color: darkgray;">{{tools.timeChn(item._time,2)}}</view>
+                            </view>
+                      </scroll-view>
+                    </view>
+              </view>
+
+            </view>
+
+        <!-- 历史展示详情页 男 -->
+            <view wx:if="{{history_show_detail.data.info.gender=='男'}}" class='ruleZhezhaoContent'>
+            
+              <!-- 固定高宽 -->
+              <view style="height: 100%; width: 100%;">
+                    <!-- 关闭按钮 -->
+                    <view style="height: 7%; display: flex; justify-content: space-between; align-items: center;">
+                      <view style="margin-left: 48%;">详情</view>
+                      <text class='ruleHide' bindtap='hideRule_history_detail'>✖</text>
+                    </view>
+
+
+                    <!-- 详情 -->
+                          <!-- 历史展示详情页 男 -->
+                          <scroll-view scroll-y="true" style="height: 93%; width: 100%; padding: 0 5%;">
+                              <view style="z-index: -1;width: 90%; height: 100%; margin-top: 20rpx;">
+                                  <!-- text -->
+                                  <view style="padding: 10rpx; font-size: 30rpx; ;background-color: #c1ebff;border-radius: 15px;height:auto; width: 90%; padding: 5%; text-align: center">
+                                    {{history_show_detail.data.info.nr}}
+                                  </view>
+                                  <!-- pic -->
+                                  <view style=" border: rgb(244, 244, 247) 1rpx solid;font-size: 45rpx; background-color: #c1ebff;border-radius: 15px;height: 500rpx; width: 100%; margin-top: 20rpx; margin-bottom: 20rpx;">
+                                    <view style=" margin: 7% 7% ;width: 86%;height: 86%;border-radius: 20rpx;" >
+                                      <image src="{{history_show_detail.data.info.pic!=''?history_show_detail.data.info.pic:'/images/plp/giphy_cat.png'}}" bindtap="preview" data-havesrc="{{history_show_detail.data.info.pic}}" mode="aspectFill" style="width:100%; height: 100%;border-radius: 20rpx; margin:0">
+                                      </image>
+                                    </view>
+                                  </view>
+                              </view>
+                          </scroll-view>
+
+
+              </view>
+
+            </view>
+
+        <!-- 历史展示详情页 女 -->
+          <view wx:if="{{history_show_detail.data.info.gender=='女'}}" class='ruleZhezhaoContent'>
+            
+            <!-- 固定高宽 -->
+            <view style="height: 100%; width: 100%;">
+                  <!-- 关闭按钮 -->
+                  <view style="height: 7%; display: flex; justify-content: space-between; align-items: center;">
+                    <view style="margin-left: 48%;">详情</view>
+                    <text class='ruleHide' bindtap='hideRule_history_detail'>✖</text>
+                  </view>
+
+
+                  <!-- 详情 -->
+                        <!-- 历史展示详情页 女 -->
+                        <scroll-view scroll-y="true" style="height: 93%; width: 100%; padding: 0 5%;">
+                            <view style="z-index: -1;width: 90%; height: 100%; margin-top: 20rpx;">
+                                <!-- text -->
+                                <view style="padding: 10rpx; font-size: 30rpx; ;background-color: #faf0f6;border-radius: 15px;height:auto; width: 90%; padding: 5%; text-align: center">
+                                  {{history_show_detail.data.info.nr}}
+                                </view>
+                                <!-- pic -->
+                                <view style=" border: rgb(244, 244, 247) 1rpx solid;font-size: 45rpx; background-color: #faf0f6;border-radius: 15px;height: 500rpx; width: 100%; margin-top: 20rpx; margin-bottom: 20rpx;">
+                                  <view style=" margin: 7% 7% ;width: 86%;height: 86%;border-radius: 20rpx;" >
+                                    <image src="{{history_show_detail.data.info.pic!=''?history_show_detail.data.info.pic:'/images/plp/giphy_cat.png'}}" bindtap="preview" data-havesrc="{{history_show_detail.data.info.pic}}" mode="aspectFill" style="width:100%; height: 100%;border-radius: 20rpx; margin:0">
+                                    </image>
+                                  </view>
+                                </view>
+                            </view>
+                        </scroll-view>
+
+
+            </view>
+
+          </view>
+
+  </view>
+  <!--  end  -->
+
+
+
+
+
+
+
+
+  <!-- 菜单 =========================================================================-->
+  <view class="tab">
+    <view class="redpoint_man">{{NUM}}</view>
+    <view  class="take_bottle_man" bindtap='pickUpBottle_man' >
+      <view style=" font-size: larger;">🐟</view>
+      <view style="font-size: smaller;">捞一个</view>
+    </view>
+    <view class="redpoint_woman">{{NUM}}</view>
+    <view class="take_bottle_woman" bindtap='pickUpBottle_woman'>
+      <view style=" font-size: larger;">🐠</view>
+      <view style="font-size: smaller;">捞一个</view>
+     </view>
+    <view class="put_bottle" bindtap='show_put_bottle'>
+      <view style=" font-size: larger;">🌊</view>
+      <view style="font-size: smaller;">扔一个</view>
+    </view>
+    <view class="history" bindtap='show_history'>
+      <view style=" font-size: larger;">📷</view>
+      <view style="font-size: smaller;">历史</view>
+    </view>
+  </view>
+
+</view>

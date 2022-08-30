@@ -1,0 +1,8 @@
+<view class="box">
+    <image class="pic" src="{{userphoto}}" ></image>
+    <view>{{username}}</view>
+</view>
+
+<button class="goodbutton" hover-class="hover" bindtap="changetx">同步头像昵称</button>
+
+<view class="tips">提示：一个微信号只在数据库有一条记录，小程序与当前微信绑定，不能退出登录，暂时不可以修改头像及昵称等的身份信息，敬请期待该功能！</view>

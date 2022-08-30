@@ -1,0 +1,114 @@
+<view class="bigbox">
+    <view style="height: auto; width: 100%;">
+        <image  src="cloud://wan-an-gpnu-4gm1hsj6bb4b58fb.7761-wan-an-gpnu-4gm1hsj6bb4b58fb-1309987324/sys/food_list.png" class="bj" mode="widthFix" style="width: 96%; border-radius: 20rpx; margin: 2%;"></image>
+    </view>
+
+    <view style="height: 55%;width: 100%;margin-top: 10%;">
+        <button class="bt_1" bindtap="random_food">🎲听天由命</button>
+
+        <button class="bt_2" bindtap="showPopup1">🍻查看食谱</button>
+
+        <button class="bt_3" bindtap="showPopup2">🔔自定义...</button>
+    </view>
+
+    <FtView></FtView>
+</view>
+
+
+<!-- 弹出层1---随机选择今天的菜品-->
+<van-popup
+  show="{{ show }}"
+  custom-style="height: 20%;width:60%"
+  bind:close="onClose"
+  round>
+    <view style="height: 100%;width: 100%;background: linear-gradient(to right,#f9957f, #e5eba4, #96a2db, #c973ff );">
+        <view style="height: 25%;width: 100%;text-align: center;color:#000000;display: flex;justify-content: center;align-items: center;font-size: 35rpx;">
+            <view>🍴您今天选中的菜肴是:</view>
+        </view>
+        <view style="height: 55%;width: 100%;display: flex;justify-content: center;align-items: center;font-size: 45rpx;">
+            <view>{{food_list[random_nub]}}</view>
+        </view>
+    </view>
+</van-popup>
+
+
+
+
+<!-- 弹出层2---查看食谱 -->
+<van-popup
+  show="{{ show1 }}"
+  custom-style="height: 40%;width:60%"
+  bind:close="onClose1"
+  round>
+    <view style="height: 100%;width: 100%;background: linear-gradient(to right,#f9957f, #e5eba4, #96a2db, #c973ff);">
+       <view style="height: 16%;width: 100%;display: flex;justify-content: center;align-items: center;font-size: 40rpx;border-bottom: 1rpx solid rgb(255, 255, 255,0.5);margin-bottom: 4%;">
+            <view>菜谱</view>
+       </view>
+       <scroll-view style="height: 80%;width: 100%;" scroll-y>
+            <view wx:for="{{food_list}}" wx:key="index" style="height: 18%;width: 90%;border-radius: 20rpx;border: 1rpx solid rgb(255, 255, 255,0.5);margin-left: 5%;margin-bottom: 5%;display: flex;justify-content: center;align-items: center;font-size: 35rpx;">
+                <view>{{item}}</view>
+            </view>
+       </scroll-view>
+    </view>
+</van-popup>
+
+
+
+
+
+<!-- 弹出层3---自定义 -->
+<van-popup
+  show="{{ show2 }}"
+  custom-style="height: 15%;width:50%"
+  bind:close="onClose2"
+  round>
+    <view style="height: 100%;width: 100%;background: linear-gradient(to right,#f9957f, #e5eba4, #96a2db, #c973ff );">
+        <view style="height: 50%;width: 100%;display: flex;justify-content: center;align-items: center;font-size: 38rpx;border-bottom: 1rpx solid rgb(255, 255, 255,0.5)">
+            <view catchtap="showPopup3">🍧添加菜肴</view>
+        </view>
+        <view style="height: 50%;width: 100%;display: flex;justify-content: center;align-items: center;font-size: 38rpx;">
+            <view catchtap="showPopup4">🍡删除菜肴</view>
+        </view>
+    </view>
+</van-popup>
+
+
+<!-- 弹出层4---添加菜品 -->
+<van-popup
+  show="{{ show3 }}"
+  custom-style="height: 20%;width:60%"
+  bind:close="onClose3"
+  round>
+    <view style="height: 100%;width: 100%;background: linear-gradient(to right,#f9957f, #e5eba4, #96a2db, #c973ff );display: flex;flex-direction: column;align-items: center;">
+        <view style="height: 20%;width: 100%;display: flex;justify-content: center;align-items: center;font-size: 38rpx;">
+            <view>添加菜品</view>
+        </view>
+
+        <view style="height: 30%;width: 90%;margin-top: 5%; border-radius: 20rpx;border: 1rpx solid rgb(255, 255, 255,0.5);">
+            <input style="height: 100%;width: 95%;margin-left: 5%; border-radius: 20rpx;" placeholder="菜品名..."value="{{food?food:''}}"    bindinput="input_food" type="text"/>
+        </view>
+
+        <view style="height: 30%;width: 100%;margin-top: 5%;display: flex;">
+            <button plain  style="height: 90%;width: 35%;font-size: 30rpx;" catchtap="onClose3" >取消</button>
+            <button plain style="height: 90%;width: 35%;font-size: 30rpx;" catchtap="add_food">确认</button>
+        </view>
+
+    </view>
+</van-popup>
+
+
+
+<!-- 弹出层5---删除菜品 -->
+<van-popup
+  show="{{ show4 }}"
+  custom-style="height: 35%;width:70%"
+  bind:close="onClose4"
+  round>   
+    <view style="height: 100%;width: 100%;">
+        <van-picker style="height: 100%;width: 100%;" columns="{{ food_list }}" bind:change="onChange" show-toolbar title="菜品" bind:confirm="delete_food" bind:cancel="onClose4"/>
+    </view>
+</van-popup>
+
+
+
+

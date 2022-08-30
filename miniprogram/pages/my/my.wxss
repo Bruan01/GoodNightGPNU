@@ -1,0 +1,50 @@
+/* 未登陆时 */
+
+
+
+
+
+/* 登陆后 */
+
+/* pages/my/my.wxss */
+.tools{padding:20rpx 10rpx 20rpx;}
+.bigbox{width:3000rpx ;height: 150rpx;}
+.selection{margin-top: 10px;}
+
+.list-item-image{width: 100%;height: 150rpx;position:absolute;}
+
+.touxiang{width: 130rpx;height: 130rpx;border-radius: 50%;position:absolute;bottom: 0rpx;left: 50rpx;}
+.bianji{width: 30rpx;height: 150rpx;position:absolute;bottom: -45rpx;right: 50rpx;font-size: larger;}
+.nicheng{width: 300rpx;height: 150rpx;position:absolute;bottom: -45rpx;right: 240rpx;font-size: large;}
+
+/*控制大小，实现文字居中，（图片+文字作为一个块）按行排列，加padding效果*/
+.hezi{width: 500rpx;height:3000rpx;background-color:blue;}
+
+.box{width: 100rpx;text-align: center;margin-bottom: 10rpx;padding:55rpx;position: relative;display: inline-block;border-radius: 10rpx;background-color: coral;}
+
+
+.box1{ width:32%; height: 40%;text-align: center;color: dimgrey;}
+.num{ width: 100%; height: 100%; text-align: center;}
+.row{
+    width: 100%;
+    height: 200rpx;
+    /* background-color: cyan; */
+    display: flex;
+    
+    /*row 横向  column 列表  */
+    flex-direction: row;
+    /* 左右居中 */
+    justify-content: center;
+    /* 上下居中 */
+    align-items: center;
+  }
+  .txt{ font-size: 33rpx;height: 100%;position: relative;padding-left: 20rpx;}
+  .box2{width: 140rpx;text-align: center;padding:20rpx;margin-bottom: 40rpx;position: relative;display: inline-block;color:dimgrey;font-size:small}
+  /*控制大小，实现文字居中，（图片+文字作为一个块）按行排列，加padding效果*/
+  .fw{width: 75rpx;height: 75rpx;}
+  
+
+
+
+
+

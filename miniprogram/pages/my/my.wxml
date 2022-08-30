@@ -1,0 +1,123 @@
+<!-- 引入工具类 -->
+<wxs module="tools" src="/util/filter.wxs"/>
+
+<!-- 没有登录 -->
+<block wx:if="{{login!=true}}">
+
+<view style="margin-top: 30%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+
+    <!-- 背景pyq图片 -->
+    <view style="margin-bottom: 100rpx;">
+        <image src="{{userphoto}}" mode='aspectFill' 
+        style="width: 150rpx; height: 150rpx;">
+        </image>
+    </view>
+
+
+    <view style="opacity: 0.75;">
+        <view style="margin-bottom: 15rpx;">申请获取以下权限</view>
+        <view style="color: #adadad;">获取你的公开信息（昵称、头像等）</view>
+    </view>
+
+
+    <view>
+        <button bindtap="GetUserInfo" style="margin-top: 50rpx; width: 500rpx; border-radius: 50rpx;" type="primary">授权登录
+        </button>
+    </view>
+
+
+    <view style="font-size: 90%; margin-top: 10rpx;">
+        <checkbox-group bindchange="tongyixieyi">
+            <checkbox value="true">
+            </checkbox>
+            <text style="color:#adadad;">登录晚安广师君即同意 </text>
+            <text style="opacity: 0.75;" bindtap="xianshixieyi">《使用协议》</text>
+        </checkbox-group>
+    </view>
+
+
+    <view style="opacity: 0.75; position: fixed; bottom: 15%; font-size: 80%;">
+        <view>版权所有 © 2022 晚安广师君开发组</view>
+        <view style="color: #adadad;">20人工智能2: 曾运标、林楷川、连楷洪、梁凤鸣</view>
+    </view>
+
+</view>
+
+
+
+</block>
+
+
+
+<!-- 已经登录 -->
+
+<block wx:else>
+    <!--pages/my/my.wxml-->
+    <view>
+    <view class="bigbox" bindtap="to_myinfornation">
+        <view scroll-y class='list-item-image' >        
+            <navigator class='bianji'open-type="switchTab"url="/pages/index/index">></navigator>
+            <view class="nicheng">{{username}}</view>
+            <image src="{{userphoto}}" catchtap="chakantouxiang"  class="touxiang" mode='scaleToFill'></image>
+        </view>
+    </view>
+    </view>
+    <!-- 横向布局 -->
+    <view class="row">    
+        <view class="box1" hover-class="boxHover" data-flag="concerned" catchtap="fensi">{{tools.getNumber(total_guanzhu)}}
+            <view class="num" hover-class="itemHover" hover-stop-propagation>关注</view> 
+        </view>
+        <view class="box1" hover-class="boxHover" data-flag="fans" catchtap="fensi">{{tools.getNumber(total_fans)}}
+            <view class="num" hover-class="itemHover" hover-stop-propagation>粉丝</view> 
+        </view>
+        <view class="box1" hover-class="boxHover">{{tools.getNumber(total_huati)}}
+            <view class="num" hover-class="itemHover" hover-stop-propagation>话题</view> 
+        </view>
+    </view>
+
+    <view class="txt">我的服务</view>
+
+    <navigator class="box2"  url="/pages/mytopic/mytopic?openid={{openid}}" hover-class="none">
+            <image class="fw" mode="heightFix" src="/images/user/kongjian.png"></image>
+            <view >我的空间</view>       
+    </navigator> 
+    <navigator class="box2"  url="/pages/plguode/plguode?canshu=pinglunde" hover-class="none">
+            <image class="fw" mode="heightFix" src="/images/user/plguode.png"></image>
+            <view >评论过的</view>       
+    </navigator> 
+    <navigator class="box2"  url="/pages/about/about" hover-class="none">
+            <image class="fw" mode="heightFix" src="/images/user/guanyu.png"></image>
+            <view >关于小程序</view>       
+    </navigator> 
+    <navigator class="box2"  url="/pages/fankui/fankui" hover-class="none">
+            <image class="fw" mode="heightFix" src="/images/user/fankui.png"></image>
+            <view >帮助与反馈</view>       
+    </navigator> 
+    <navigator class="box2"  url="/pages/setting/setting" hover-class="none">
+            <image class="fw" mode="heightFix" src="/images/user/shezhi.png"></image>
+            <view >设置</view>       
+    </navigator> 
+
+    <view class="txt">我的工具</view>
+    <navigator class="box2"  url="/pages/food_list/food_list" hover-class="none">
+            <image class="fw" mode="heightFix" src="/images/user/chi.png"></image>
+            <view >今天吃什么</view>       
+    </navigator> 
+    <navigator class="box2"  url="/pages/clock/clock" hover-class="none">
+            <image class="fw" mode="heightFix" src="/images/user/fanqie.png"></image>
+            <view >番茄钟</view>       
+    </navigator> 
+    <navigator class="box2"  url="/pages/anmianqu/anmianqu" hover-class="none">
+            <image class="fw" mode="heightFix" src="/images/user/chunyingyue.png"></image>
+            <view >安眠曲</view>       
+    </navigator> 
+    <navigator class="box2"  url="/pages/suijishu/suijishu" hover-class="none">
+            <image class="fw" mode="heightFix" src="/images/user/shuijishu.png"></image>
+            <view >随机数生成</view>       
+    </navigator>
+    <navigator class="box2"  url="/pages/daojishi/daojishi" hover-class="none">
+            <image class="fw" mode="heightFix" src="/images/user/clock.png"></image>
+            <view >日程倒计时</view>       
+    </navigator> 
+
+</block>

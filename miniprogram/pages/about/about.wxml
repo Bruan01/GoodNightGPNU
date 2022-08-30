@@ -1,0 +1,50 @@
+<view style="width:750rpx;height:100vh; opacity: 0.75;" >
+  <view  style="display:flex;flex-direction:column;justify-content:space-around;align-items:center;height:260rpx; margin-top: 20rpx;"  >
+    <image style="width:150rpx; height:150rpx;border-radius:50%;overflow: hidden;" src="/images/logo2.jpg"  ></image>
+    <view style="color:#000000;font-size:120%;margin-top:10rpx" >{{nm}}</view>
+  </view>
+
+  <view style="margin-top:100rpx" >
+    <view  style="display:flex;justify-content:space-between;margin:30rpx" bindtap="fuzhi" data-item="{{youxiang}}" >
+      <view style="display:flex;flex-direction:column" >
+        <view style="color:#020202" >官方邮箱</view>
+        <view style="font-size:80%;color:#696969" >{{youxiang}}</view>
+      </view>
+      <view style="display:flex;align-items:center" >
+        <view style="font-size:80%;color:#696969" >点击复制></view>
+      </view>
+    </view>
+
+    <view style="display:flex;justify-content:space-between;margin:30rpx" bindtap="fuzhi" data-item="{{weixin}}" >
+      <view style="display:flex;flex-direction:column" >
+        <view  style="color:#080808" >官方微信</view>
+        <view  style="font-size:80%;color:#696969" >{{weixin}}</view>
+      </view>
+      <view style="display:flex;align-items:center" >
+        <view  style="font-size:80%;color:#696969" >点击复制></view>
+       
+      </view>
+    </view>
+
+    <view  style="display:flex;justify-content:space-between;margin:30rpx" bindtap="fuzhi" data-item="{{ID}}" >
+      <view  style="display:flex;flex-direction:column" >
+        <view  style="color:#070707" >我的ID</view>
+        <view  style="font-size:80%;color:#696969" >{{ID}}</view>
+      </view>
+      <view style="display:flex;align-items:center" >
+        <view  style="font-size:80%;color:#696969" >点击复制></view>
+      </view>
+    </view>
+  </view>
+  
+  <view style="margin: 0rpx 3%;">
+    <view class="text1">免责声明：</view>
+    <view class="text">🔘晚安广师君小程序开发搭建均在遵守法律的基础上，素材部分来自网络资源，如有侵权，请联系删除；若有内容侵犯了您的权益，请联系客服，我们会第一时间进行处理。
+    </view>
+    <view class="text">🔘晚安广师君小程序基于微信云开发环境搭建，若由于平台不可抗逆因素导致无法使用，概不承担责任。
+    </view>
+    <view class="text">🔘晚安广师君小程序为实现认证功能，请勿轻易相信他人，提高防诈骗意识，如发生财产安全意外，概不承担责任。
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,7 @@
+.header{width: 750rpx; height: 60rpx; border: 1rpx solid rgb(255, 255, 255);}
+/* 行排列，两边撑开，居中 */
+.hdCon{display: flex; justify-content: space-between; align-items: center; margin-left: 5px;}
+.logo{height: 70rpx;}
+.kefu{ height: 50rpx; position: relative; animation: donghua linear 1.5s infinite alternate; margin-right: 10px;}
+.hdCon .hdpic{height: 100%;}
+.kefu .btn{position: absolute; width: 100%; height: 100%; top: 0rpx; left: 0rpx; opacity: 0;}

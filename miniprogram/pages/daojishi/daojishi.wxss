@@ -1,0 +1,56 @@
+
+.container{
+  border-radius: 20rpx;
+  background:  #f1f1f1cc ;
+  width: 100%;
+  height: 65rpx;
+  font-style: italic;
+  font-size: 30rpx;  
+}
+
+.out{
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+}
+.btn{
+  width: 90%;align-items: center;text-align: center;justify-content: center;margin: auto;margin-top: 10rpx;border-radius: 20rpx;
+}
+
+/* 倒计时页面样式 */
+.title {
+  font-size: large;
+}
+.countdown-item {
+    width: 100%;
+    height: 100rpx;
+    border: 0rpx solid rgb(206, 130, 130);
+  }
+  
+  .countdown-title {
+    width: 100%;
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 40rpx;
+    color: #fff;
+  }
+  
+  .tui-conutdown-box {
+    display: inline-block;
+    border-radius: 20rpx;
+    line-height: 50rpx;
+    text-align: center;
+    background-color: rgb(243, 188, 188);
+    color: #fff;
+    margin: 0 4rpx;
+    padding: 7rpx 14rpx;
+  }
+  
+  .countdown-text{
+    font-size: smaller;
+    color: #000;
+  }
+  

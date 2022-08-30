@@ -1,0 +1,212 @@
+/* pages/plp/plp.wxss */
+page{
+  height: 100%;
+  width: 100%;
+}
+.out{
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+
+.out .tab{
+  position: relative;
+  margin: 0rpx 40rpx;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  z-index: -1;
+  display: flex;
+  position: fixed;
+  bottom: 3%;
+  display: flex;
+  background-color: rgb(255, 255, 255,0.7) ;
+  width: 670rpx ;
+  height: 14%;  /* 750-260=490-40=50 */
+  border-radius: 18px
+}
+.take_bottle_man {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin: auto;
+  width: 110rpx;
+  height: 110rpx;
+  background-color: rgb(240,255,240);
+}
+
+.take_bottle_woman{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: 110rpx;
+  height: 110rpx;
+  margin: auto;
+  background-color: rgb(245,255,250);
+}
+
+.put_bottle{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: 110rpx;
+  height: 110rpx;
+  margin: auto;
+  background-color: rgb(240,255,255);
+}
+.history{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: 110rpx;
+  height: 110rpx;
+  margin: auto;
+  margin-left: 10rpx;
+  background-color: rgb(240,248,255);
+}
+ 
+.tip{
+    border-radius: 20rpx;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 20%;
+    height: 63%;
+    width: 80%;
+    display:flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+
+
+
+/* 规则提示层  */
+.isRuleShow{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.isRuleHide{
+    display: none;
+}
+.ruleZhezhao{
+  margin: auto;
+    height: 100%;
+    width: 100%;
+    background-color:rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+.ruleZhezhaoContent{
+    height: 75%;
+    width: 80%;
+    background: #d9ecf0;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+.ruleZhezhaoText{
+    width: 80%;
+    font-size: 30rpx;
+    color: #856d5f;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 25rpx 0 25rpx 0;
+}
+.ruleZhezhaoText text:nth-child(1){
+    color: #fff;
+    font-size: 40rpx;
+    height: 60rpx;
+    width: 60rpx;
+    background: #664a2c;
+    display: block;
+    text-align: center;
+    line-height: 60rpx;
+    border-radius: 30rpx;
+    margin-right: 10rpx;
+}
+.ruleZhezhaoText text:nth-child(2){
+    flex-wrap:wrap;
+    width: 80%;
+}
+.ruleHide{
+    font-size: 40rpx;
+    height: 60rpx!important;
+    width: 60rpx!important;
+    position: absolute;
+    top: 0rpx;
+    right: -10rpx;
+}
+
+/*  end  */
+.history_text{
+  width: 60%;
+  overflow:hidden;
+  /* 超出一行文字自动隐藏 */
+  text-overflow:ellipsis;
+  /* 文字隐藏后添加省略号 */
+  white-space:nowrap;
+  /* 强制不换行 */
+}
+
+.tijiao_1{
+  border-radius: 15px;
+  background-color: rgba(43, 82, 209, 0.8);
+  width: 80%; 
+  height: 100rpx;
+  margin: auto;
+  margin-bottom: 200rpx;
+  margin-top: 10%;
+}
+
+.tijiao{
+  border-radius: 15px;
+  background-color: rgba(55, 95, 226, 0.5);
+  width: 80%; 
+  height: 100rpx;
+  margin: auto;
+  margin-bottom: 200rpx;
+  margin-top: 10%;
+}
+.redpoint_man{
+  color: #fff;
+  font-size: smaller;
+  z-index: 2;
+  text-align: center;
+  align-items: center;
+  text-align: center;
+  height: 40rpx;
+  width: 40rpx;
+  position: absolute;
+  background-color: red;
+  border-radius: 50%;
+  top:20rpx;
+  left:18% ;
+}
+.redpoint_woman{
+  color: #fff;
+  font-size: smaller;
+  z-index: 2;
+  text-align: center;
+  align-items: center;
+  text-align: center;
+  height: 40rpx;
+  width: 40rpx;
+  position: absolute;
+  background-color: red;
+  border-radius: 50%;
+  top:20rpx;
+  left:43% ;
+}

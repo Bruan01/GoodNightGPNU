@@ -1,0 +1,80 @@
+<!-- 我的粉丝 -->
+<block wx:if="{{type=='fans'}}">
+  <view style="width: 92%; height: auto; margin: 30rpx 4%;">
+
+    <!-- wx:for -->
+    <view wx:for="{{shuju}}" wx:key="index" wx:for-item="item" wx:for-index="index0" style="margin-bottom: 20rpx;">
+
+      <!-- 每个粉丝下 -->
+      <view style="width: 100%; display: flex; align-items: center;">
+        <!-- 用户头像 -->
+        <view bindtap="tiaozhuan" data-openid="{{item.openid}}" style="width: 15%; margin-right: 5%;">
+        <image src="{{item.userphoto}}" style="border-radius: 10rpx; width: 100rpx; height: 100rpx;"index mode="aspectFill"></image>
+        </view>
+        <!-- 用户姓名 -->
+        <view style="margin-right: 8%; width: 43%; opacity: 0.75;">{{item.username}}</view>
+        <!-- 取消关注 -->
+        <view style="width: 26%; margin-right: 3%;">
+          <view bindtap="guanzhuorquxiao" data-index0="{{index0}}" data-openid="{{item.openid}}"  wx:if="{{gzbiaozhi[index0]}}" style="border-radius: 10rpx; text-align: center; height: 55rpx; border: 1rpx solid rgb(218, 218, 218);"><text style=" opacity: 0.75;">已关注</text>
+
+          </view>
+          <view bindtap="guanzhuorquxiao" data-index0="{{index0}}" data-openid="{{item.openid}}" wx:else style="border-radius: 10rpx; text-align: center; height: 55rpx; background-color: rgb(120, 171, 238);"><text style=" opacity: 0.75;">关注</text>
+          </view>
+
+        </view>
+      </view>
+      <!-- 每个粉丝上 -->
+
+    </view> 
+    <!-- wx:for -->
+
+  </view>
+</block>
+<!-- 我的粉丝================================================= -->
+
+
+
+
+
+<!-- 我关注的================================================= -->
+<block wx:if="{{type=='concerned'}}">
+  <view style="width: 92%; height: auto; margin: 30rpx 4%;">
+    
+    <!-- wx:for -->
+    <view wx:for="{{shuju}}" wx:key="index" wx:for-item="item" wx:for-index="index0" style="margin-bottom: 20rpx;">
+
+      <!-- 每个粉丝下 -->
+      <view style="width: 100%; display: flex; align-items: center;">
+        <!-- 用户头像 -->
+        <view bindtap="tiaozhuan" data-openid="{{item.openid}}" style="width: 15%; margin-right: 5%;">
+        <image src="{{item.userphoto}}" style="border-radius: 10rpx; width: 100rpx; height: 100rpx;"index mode="aspectFill"></image>
+        </view>
+        <!-- 用户姓名 -->
+        <view style="margin-right: 8%; width: 43%; opacity: 0.75;">{{item.username}}</view>
+        <!-- 取消关注 -->
+        <view style="width: 26%; margin-right: 3%;">
+          <view bindtap="guanzhuorquxiao" data-index0="{{index0}}" data-openid="{{item.openid}}"  wx:if="{{gzbiaozhi[index0]}}" style="border-radius: 10rpx; text-align: center; height: 55rpx; border: 1rpx solid rgb(218, 218, 218);"><text style=" opacity: 0.75;">已关注</text>
+
+          </view>
+          <view bindtap="guanzhuorquxiao" data-index0="{{index0}}" data-openid="{{item.openid}}" wx:else style="border-radius: 10rpx; text-align: center; height: 55rpx; background-color: rgb(120, 171, 238);"><text style=" opacity: 0.75;">关注</text>
+          </view>
+
+        </view>
+      </view>
+      <!-- 每个粉丝上 -->
+
+    </view> 
+    <!-- wx:for -->
+
+  </view>
+</block>
+
+
+
+
+
+
+<!-- 没有粉丝 -->
+<view class="img" wx:if="{{shuju.length==0}}" style="display:flex;justify-content:center;padding-top:200rpx" >
+  <image class="kong" src="cloud://wan-an-gpnu-4gm1hsj6bb4b58fb.7761-wan-an-gpnu-4gm1hsj6bb4b58fb-1309987324/sys/zanwufans.png" mode="widthFix" style="width:500rpx;height:auto" ></image>
+</view>

@@ -1,0 +1,96 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/dongtai/dongtai",
+    "pages/my/my",
+    "pages/myinfornation/myinfornation",
+    "pages/mytopic/mytopic",
+    "pages/dontai/dontai",
+    "pages/detail/detail",
+    "pages/boke/boke",
+    "pages/search/search",
+    "pages/message/message",
+    "pages/plp/plp",
+    "pages/jielou/jielou",
+    "pages/jielou_detail/jielou_detail",
+    "pages/xieyi/xieyi",
+    "pages/daojishi/daojishi",
+    "pages/suijishu/suijishu",
+    "pages/clock/clock",
+    "pages/anmianqu/anmianqu",
+    "pages/fankui/fankui",
+    "pages/food_list/food_list",
+    "pages/about/about",
+    "pages/setting/setting",
+    "pages/plguode/plguode",
+    "pages/fans_list/fans_list",
+    "pages/gzh/gzh"
+  ],
+  "window": {
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "晚安广师君",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "usingComponents": {
+    "HdView": "/components/HdView/HdView",
+    "FtView": "/components/FtView/FtView",
+    "Tabs": "/components/Tabs/Tabs",
+    "van-button": "@vant/weapp/button/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-form": "@vant/weapp/field/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "van-skeleton": "@vant/weapp/skeleton/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-area": "@vant/weapp/area/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-share-sheet": "@vant/weapp/share-sheet/index",
+    "van-picker": "@vant/weapp/picker/index"
+  },
+  "tabBar": {
+    "selectedColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home_.png"
+      },
+      {
+        "pagePath": "pages/plp/plp",
+        "text": "漂流瓶",
+        "iconPath": "images/plp_home.png",
+        "selectedIconPath": "images/plp_home_ac.png"
+      },
+      {
+        "pagePath": "pages/jielou/jielou",
+        "text": "接楼",
+        "iconPath": "images/tizi.png",
+        "selectedIconPath": "images/tizi_.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "信息",
+        "iconPath": "images/xiaoxi.png",
+        "selectedIconPath": "images/xiaoxi_.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my_.png"
+      }
+    ]
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}

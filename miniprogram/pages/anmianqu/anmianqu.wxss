@@ -1,0 +1,186 @@
+/**index.wxss**/
+.container{
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+/*1*/
+.title-container{
+  position: absolute;
+  top: 0;
+  height: 10%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: red; */
+}
+
+.title-left{
+  width: 8%;
+  height: 100%;
+}
+
+.text{
+  opacity: 0.75;
+  text-align: center;
+}
+
+.icon-list{
+  width: 54rpx;
+  height: 36rpx;
+  margin: 0 30rpx 0 0;
+}
+
+
+
+
+/*2*/
+.rotate-disk-container{
+  position: absolute;
+  top: 10%;
+  height: 65%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* background-color: rgb(0, 142, 224); */
+}
+.rotate-disk{
+  width: 600rpx;
+  height: 600rpx;
+  border-radius: 600rpx;
+  overflow: hidden;
+  border: 20rpx solid rgba(54, 43, 41, 0.2);
+  
+}
+.poster{
+  width: 600rpx;
+  height: 600rpx;
+}
+.rotate-360{
+  animation: rotate 10s linear infinite;
+}
+.rotate-360-paused{
+  animation: rotate 10s linear infinite;
+  animation-play-state: paused;
+}
+@keyframes rotate
+{
+  0%   {transform: rotate(0deg);}
+  50% {transform: rotate(180deg);}
+  100% {transform: rotate(360deg);}
+}
+
+
+
+
+
+/* 3 */
+.slider-container{
+  position: absolute;
+  bottom: 20%;
+  width: 100%;
+  height: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* background-color: rosybrown; */
+}
+.slider-time{
+  font-size: 32rpx;
+  display: block;
+  width: 19%;
+  text-align: center;
+  line-height: 18px;
+  color: rgb(0, 142, 224);
+}
+.wx-slider-handle{
+  width: 18px!important;
+  height: 18px!important;
+  top: 5px!important;
+}
+
+
+
+/*4*/
+.operation-container{
+  position: absolute;
+  bottom: 10%;
+  height: 10%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* background-color: saddlebrown; */
+}
+.icon-prev{
+  
+  background-repeat: no-repeat;
+  background-position: -76px -153px;
+  width: 80rpx;
+  height: 80rpx;
+}
+.icon-play{
+  
+  background-repeat: no-repeat;
+  background-position: -136px -153px;
+  margin: 0 20rpx;
+  width: 98rpx;
+  height: 98rpx;
+}
+.icon-pause{
+ 
+  background-repeat: no-repeat;
+  background-position: -178px -193px;
+  margin: 0 20rpx;
+  width: 98rpx;
+  height: 98rpx;
+}
+.icon-next{
+  
+  background-repeat: no-repeat;
+  background-position: -204px -154px;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+
+
+
+
+
+/*5*/
+.list{
+  height: 90%;
+  width: 100%;
+  color: rgb(2, 2, 2);
+}
+.list-one{
+  height: 90rpx;
+  display: flex;
+  padding: 0 30rpx;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.list-one-poster{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 3%;
+  border-radius: 10rpx;
+}
+
+.nameauthor text{
+  opacity: 0.75;
+}
+
+.list-one-choose{
+  background-color: rgba(54, 43, 41, 0.2);
+}

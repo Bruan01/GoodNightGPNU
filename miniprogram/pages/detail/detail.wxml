@@ -1,0 +1,702 @@
+<wxs module="tools" src="/util/filter.wxs"/>
+
+ 
+<!-- 不失效 -->
+<block wx:if="{{ss_xx!=0}}">
+
+
+  <!-- 动态详情展示 -->
+  <block wx:if="{{ss_xx.flag==0}}">
+    <!-- 下面是详情内容 -->
+    <view class="B" >
+      <!-- B1为头像 -->
+      <view class="B1" bindtap="navigatorTomytopic" data-openid="{{ss_xx._openid}}" data-id="{{userphoto}}">
+        <image wx:if="{{true}}" class="photo" 
+        src="{{ss_xx.shuoshuo_xingxi.userphoto}}" mode="widthFix" ></image>
+        <image wx:else class="photo" src="/images/niming.png" mode="widthFix" ></image>
+      </view>
+
+      <!-- B2为其他内容 -->
+      <view class="B2">
+
+        <!-- 第一部分  用户名字及动态类型图标-->
+        <view class="B21" >
+          <!-- 用户名 -->
+          <view class="username">
+              <view wx:if="{{true}}" class="name" 
+            style="font-size:90%;margin-top:5rpx;color:#26688f" >
+              {{ss_xx.shuoshuo_xingxi.username}}
+            </view>
+            <view wx:else class="name" 
+            style="font-size:90%;margin-top:5rpx;color:#26688f" >
+              {{"匿名用户"}}
+            </view>
+          </view>
+
+          <!-- 动态类型图标 -->
+          <view class="dongtaitype">
+                <!-- 知识-科技 -->
+                <image src="/images/fenlei/keji.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==1&&ss_xx.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-财经 -->
+                <image src="/images/fenlei/caijing.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==1&&ss_xx.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-法知 -->
+                <image src="/images/fenlei/fazhi .png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==1&&ss_xx.shuoshuo_xingxi.subclass==2}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-文学 -->
+                <image src="/images/fenlei/wenxue.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==1&&ss_xx.shuoshuo_xingxi.subclass==3}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-艺术 -->
+                <image src="/images/fenlei/yishu.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==1&&ss_xx.shuoshuo_xingxi.subclass==4}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-其他 -->
+                <image src="/images/fenlei/qitazhishi.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==1&&ss_xx.shuoshuo_xingxi.subclass==5}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 表白墙-表白 -->
+                <image src="/images/fenlei/biaobai.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==2&&ss_xx.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 表白墙-捞人 -->
+                <image src="/images/fenlei/laoren.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==2&&ss_xx.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 表白墙-卖舍友 -->
+                <image src="/images/fenlei/maisheyou.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==2&&ss_xx.shuoshuo_xingxi.subclass==2}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-运动 -->
+                <image src="/images/fenlei/yundong.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==3&&ss_xx.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-学习 -->
+                <image src="/images/fenlei/xuexi.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==3&&ss_xx.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-逛街 -->
+                <image src="/images/fenlei/guangjie.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==3&&ss_xx.shuoshuo_xingxi.subclass==2}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-旅游 -->
+                <image src="/images/fenlei/lvyou.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==3&&ss_xx.shuoshuo_xingxi.subclass==3}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-游戏 -->
+                <image src="/images/fenlei/youxi.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==3&&ss_xx.shuoshuo_xingxi.subclass==4}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 万能代-代拿 -->
+                <image src="/images/fenlei/daina.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==4&&ss_xx.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 万能代-代跑 -->
+                <image src="/images/fenlei/daipao.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==4&&ss_xx.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 吐槽 -->
+                <image src="/images/fenlei/tucao.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==5&&ss_xx.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 寻物-寻失 -->
+                <image src="/images/fenlei/xunshi.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==6&&ss_xx.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 寻物-觅主 -->
+                <image src="/images/fenlei/mizhu.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==6&&ss_xx.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 闲鱼-出售 -->
+                <image src="/images/fenlei/mai0.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==7&&ss_xx.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 闲鱼-欲购 -->
+                <image src="/images/fenlei/mai1.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==7&&ss_xx.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 其他 -->
+                <image src="/images/fenlei/qita.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==8&&ss_xx.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 休闲 -->
+                <image src="/images/fenlei/xiuxian.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==0&&ss_xx.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+          </view>
+
+        </view>
+
+        <!-- 第二部分 动态内容文字-->
+        <view class="B22" >{{ss_xx.shuoshuo_xingxi.nr}}
+        </view>
+
+        <!-- 第三部分 动态内容图片-->
+        <view class="B23" > 
+
+          <!-- 第一种 单张图片-->
+          <view wx:if="{{ss_xx.shuoshuo_xingxi.tp.length==1}}" class="img1" style="width: 100%;">
+            <image lazy-load="true" class="danzhang" src="{{ss_xx.shuoshuo_xingxi.tp[0]}}" style="width: 350rpx;height:auto;" mode="widthFix" data-urls="{{[0,ss_xx.shuoshuo_xingxi.tp]}}" bindtap="previewImg"/>
+          </view>
+
+          <!-- 第二种 多张图片-->
+          <view wx:if="{{ss_xx.shuoshuo_xingxi.tp.length>1}}" class="img2" style="width: 100%;">
+            <view class="xunhuan" wx:for="{{ss_xx.shuoshuo_xingxi.tp}}" wx:key="index" 
+            style="width: 193rpx;height:193rpx" wx:for-item="item1" >
+              <image lazy-load="true" class="duozhang" src="{{item1}}" style="width: 180rpx;height:180rpx;margin-right:8rpx;margin-bottom:8rpx" mode="aspectFill" data-urls="{{[index,ss_xx.shuoshuo_xingxi.tp]}}" bindtap="previewImg"/>
+            </view>
+          </view>
+
+        </view>
+
+        <!-- 第四部分  （时间）及（点赞评论浏览）-->
+        <view class="B24"  >
+          <!-- 下面显示时间 -->
+          <view class="time" style="font-size:78%;color:#B0B0B0;font-weight:lighter;">{{tools.timeChn(ss_xx._time)}}
+          </view>
+
+          <!-- 下面显示点赞评论浏览 -->
+          <view class="dzpl" style="margin-right:20rpx;display:flex;" >
+
+            <!-- 下面显示点赞， -->
+            <view class="love" style="display:flex">
+              <image src="/images/icon/zan1.png" style="width:40rpx;height:40rpx" />
+              <view class="dianzannb" style="font-size:78%;color:#656565;font-weight:lighter;margin-right:10rpx;">{{ss_xx.shuoshuo_xingxi.dianzannb}}
+              </view>
+            </view>
+
+            <!-- 下面显示回复， -->
+            <image lazy-load="true" src="/images/icon/pinglun.png" style="margin-left:10rpx;width:40rpx;height:40rpx" />
+            <view class="huifunb" style="font-size:78%;color:#656565;margin-left:10rpx;font-weight:lighter">{{ss_xx.shuoshuo_xingxi.huifunb}}
+            </view>
+
+            <!-- 下面显示浏览， -->
+            <image lazy-load="true" src="/images/icon/look.png" style="margin-left:10rpx;width:40rpx;height:40rpx" />
+            <view class="dianzannb" style="font-size:78%;color:#656565;font-weight:lighter">{{ss_xx.shuoshuo_xingxi.look}}
+            </view>
+            
+          </view>
+        </view>
+
+      </view>
+    </view>
+    <!-- 上面是详情内容 -->
+
+
+ 
+    <!-- B的附属展示点赞与转发 -->
+    <view class="Bfs" style="display:flex; justify-content: space-between; align-items: center; height:70rpx; width: 100%; margin-bottom: 30rpx;" >
+
+      <!-- 点赞 -->
+      <button wx:if="{{liuyan==false}}" class="dianzan" style="margin-left: 5%; margin-right: 5%; flex:1;background-color:#ffffff;display:flex;justify-content:center;align-items:center;" bindtap="dianzan" data-id="{{ss_xx._id}}" data-dianzanid="{{ss_xx.shuoshuo_xingxi.dianzanid}}" >
+        <view class="wz" wx:if="{{dianzan}}" style="color:#d81e06" >点赞</view>
+        <view class="wz" wx:if="{{!dianzan}}" style="color:#656565" >点赞</view>
+        <image class="tp" wx:if="{{dianzan}}" src="/images/icon/zan2.png" style="width:40rpx;height:40rpx" ></image>
+        <image class="tp" wx:if="{{!dianzan}}" src="/images/icon/zan1.png" style="width:40rpx;height:40rpx" ></image>
+      </button>
+
+
+      <!-- 举报 -->
+      <button class="jubao" style="margin-right: 5%; flex:1;background-color:#ffffff;display:flex;justify-content:center;align-items:center;" bindtap="jubao" data-id="{{ss_xx._id}}" data-jubao="{{ss_xx.shuoshuo_xingxi.jubao}}" >
+        <view class="wz" style="color:#656565" >举报</view>
+        <image class="tp" src="/images/icon/jubao.png" style="width:40rpx;height:40rpx" ></image>
+      </button>
+
+
+      <!-- 转发 -->
+      <button class="zhuanfa" style="margin-right: 5%; flex:1;background-color:#ffffff;display:flex;justify-content:center;align-items:center;" open-type="share" >
+        <view class="wz" style="color:#656565">转发</view>
+        <image class="tp" src="/images/icon/zhuanfa.png" style="width:40rpx;height:40rpx" ></image>
+      </button>
+
+    </view>
+    <!-- 上面B的附属展示点赞与转发 -->
+
+
+
+
+
+    <!-- 下面是评论回复 -->
+    <!-- 下面说啊说评论区 -->
+    <view class="C" style="margin:0rpx 20rpx;"  >
+      <!-- 第一部分,“最新评论”四个字 -->
+      <view class="C1" style="font-size:120%;margin:10rpx" >最新评论</view>
+      <!-- 下面为评论数据空白时的图片 -->
+      <view class="kong1" style="display:flex;justify-content:center" >
+        <image wx:if="{{ss_xx.shuoshuo_xingxi.huifunr.length==0}}" class="kong2" 
+        src="cloud://wan-an-gpnu-4gm1hsj6bb4b58fb.7761-wan-an-gpnu-4gm1hsj6bb4b58fb-1309987324/sys/kong.png" mode="widthFix" style="width:400rpx;margin-top:80rpx;height:auto;margin-bottom:30rpx;" />
+      </view>
+
+
+      <!-- 额外加个倒序 -->
+      <view class="daoxu" style="display:flex;flex-direction:column-reverse;" >
+        <!-- 第二部分,遍历所有评论 -->
+        <view class="C2" style="display:flex;" 
+        wx:for="{{ss_xx.shuoshuo_xingxi.huifunr}}" 
+        wx:key="index" 
+        wx:for-item="item0"
+        wx:for-index="index0"
+        bindlongpress="changanshanchu"
+        data-id0="{{item0.plrid}}" data-index="{{index0}}" data-time="{{item0.time}}" data-huifunb="{{item0.huifunb}}" >
+          <!-- 头像部分 -->
+          <view class="C21" style="flex:1;margin:5rpx">
+            <image wx:if="{{true}}" class="photo" src="{{item0.photo}}" mode="widthFix" style="border-radius:50%;overflow: hidden; height: 70rpx; width: 70rpx;" catchtap="Tomytopic" data-id="{{item0.plrid}}"></image>
+            <image wx:else class="photo" src="/images/user/niming.png" mode="widthFix" style="border-radius:50%;overflow: hidden; height: 50rpx; width: 50rpx;" ></image>
+          </view>
+
+          <!-- 头像右边所有 -->
+          <view class="C22" style="flex:15;display:flex;flex-direction:column;margin:5rpx" >
+            <!-- name-->
+            <view class="C221" style="display:flex;align-items:center" >
+              <!-- name及 -->
+              <view class="name" wx:if="{{true}}" style="font-size:80%;color:#175167;white-space: pre-line;word-break: break-all;word-wrap: break-word;" >{{item0.name}}</view>
+              <view class="name" wx:else style="font-size:80%;color:#175167;" >匿名用户</view>
+            </view>
+            <!-- 发布内容 -->
+            <view class="C222" style="margin:10rpx 0rpx;white-space:pre-line;word-break:break-all;word-wrap:break-word;margin-right:20rpx; font-size: 100%;" >{{item0.wbnr}}</view>
+            <!-- 发布时间及回复 -->
+            <view class="wai" style="display:flex" >
+              <view class="C223" style="font-size:80%;color:#B0B0B0" >{{tools.timeChn(item0.time)}}</view>
+              <text class="hf" catchtap="huifu" data-xx="{{item0}}" data-index="{{index0}}" style="margin-left:20rpx;font-weight:bold;font-size:85%;color:#656565" >回复</text>
+            </view>
+
+
+            <!-- 回复评论的评论展开 -->
+            <view class="wai" wx:if="{{item0.huifu.length>0}}" style="margin-top:15rpx;border-radius: 8rpx;overflow: hidden;" bindtap="zhankai" data-index="{{index0}}" hidden="{{item0.zhankai}}" >
+              <view class="wb"  style="font-size:70%;color:#757575;" >——展开{{item0.huifu.length}}条回复▶</view>
+            </view>
+
+            <!-- 展示回复 -->
+            <view class="pinglun" 
+            wx:for="{{item0.huifu}}" 
+            wx:key="index1"
+            wx:for-index="index1"
+            wx:for-item="item1"
+            style="display:flex" 
+            wx:if="{{item0.zhankai}}"
+            catchlongpress="changanshanchu"
+            data-id0="{{item0.plrid}}" data-index="{{index0}}" data-time="{{item0.time}}" data-index1="{{index1}}" data-id1="{{item1.plrid}}" data-time1="{{item1.time}}" 
+            >
+              <!-- 头像 -->
+              <view class="zuo" style="flex:1;margin-top:10rpx" >
+                <image wx:if="{{item1.niming!=true}}"  class="photo" src="{{item1.photo}}" mode="widthFix" style="border-radius:50%;overflow: hidden; width: 50rpx; height: 50rpx;" catchtap="Tomytopic" data-id="{{item1.plrid}}"></image>
+                <image wx:else class="photo" src="/images/user/niming.png" mode="widthFix" style="border-radius:50%;overflow: hidden; height: 50rpx; width: 50rpx;" ></image>
+              </view>
+
+              <!-- 头像右边所有 -->
+              <view class="you" style="flex:11;display:flex;flex-direction:column;margin-top:0rpx" >
+                <!-- name-->
+                <view class="C221" style="display:flex;align-items:center" >
+                  <!-- name及 -->
+                  <view class="name" style="font-size:80%;color:#175167;white-space: pre-line;word-break: break-all;word-wrap: break-word; margin-left: 5rpx; margin-top: 18rpx;" >{{item1.name}}</view>
+                </view>
+                <!-- 发布内容 -->
+                <view class="C222" style="white-space:pre-line;word-break:break-all;word-wrap:break-word; margin: 10rpx 0rpx;" >{{item1.wbnr}}</view>
+
+                <!-- 发布时间及回复 -->
+                <view class="wai" style="display:flex" >
+                  <view class="C223" style="font-size:80%;color:#B0B0B0" >{{tools.timeChn(item1.time)}}</view>
+
+                  <text class="hf" catchtap="huifu" data-xx="{{item0}}" data-xx1="{{item1}}" data-index="{{index0}}" data-index1="{{index1}}" style="margin-left:20rpx;font-weight:bold;font-size:85%;color:#656565" >回复</text>
+
+                  <view class="wai" style="margin-left:20rpx;font-size:80%;color:#757575;" bindtap="shouqi" data-index="{{index0}}" hidden="{{!item0.zhankai}}" >--收起▲</view>
+                </view>
+              </view>
+            </view>
+
+
+            <view class="line" style="margin-bottom: 20rpx;"></view>
+
+
+          </view>
+
+        </view>
+      </view>
+
+
+    </view>
+    <!-- 上面说啊说评论区 -->
+    <!-- 上面是评论回复 -->
+
+
+
+
+  <view class="kongbai" style="height:100rpx"/><!-- 空白站位标签 -->
+    <!-- 下面是评论框 -->
+    <form bindsubmit="fasong">
+      <view class="pinglun" style="position:fixed;bottom:0rpx;width:750rpx;background-color:#ffffff;border-top:thin solid #f5f5f5;">
+        <view class="bg" style="display:flex;border-radius: 50rpx;overflow: hidden;background-color:#e6e6e6;width:720rpx;margin:10rpx 15rpx">
+          <input type="text" bindinput="wbnr" placeholder="留下你的精彩评论吧" focus="{{focus}}" value='{{wbnr}}' placeholder-style="color:#656565;"  bindblur="shijiao" 
+          style="width:100%;margin:10rpx 30rpx;" maxlength="150"></input>
+          <view bindtap="fasong" 
+          style="width:130rpx;margin:10rpx 0;margin-right:20rpx;color:#F76260" >| 发送</view>
+        </view>
+      </view>
+    </form>
+    <!-- 上面是评论框 -->
+  </block>
+
+
+<!-- ==================================================== -->
+
+
+
+
+  <!-- 话题详情展示 -->
+  <block wx:if="{{ss_xx.flag==1}}">
+  
+    <view>
+      <!-- 详情 -->
+      <view style="z-index: -1; position: absolute; margin-bottom: 120rpx;">
+
+        <!-- 标题 -->
+        <view style="width:690rpx; margin:0rpx 30rpx; display: flex;">
+          <text user-select="true" style="font-size: 45rpx;opacity: 0.75;">
+          {{ss_xx.shuoshuo_xingxi.title}}
+          </text>
+
+          <!-- 动态类型图标 -->
+          <view class="dongtaitype" style="display: flex;">
+                <!-- 知识-科技 -->
+                <image src="/images/fenlei/keji.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==1&&ss_xx.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-财经 -->
+                <image src="/images/fenlei/caijing.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==1&&ss_xx.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-法知 -->
+                <image src="/images/fenlei/fazhi .png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==1&&ss_xx.shuoshuo_xingxi.subclass==2}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-文学 -->
+                <image src="/images/fenlei/wenxue.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==1&&ss_xx.shuoshuo_xingxi.subclass==3}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-艺术 -->
+                <image src="/images/fenlei/yishu.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==1&&ss_xx.shuoshuo_xingxi.subclass==4}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 知识-其他 -->
+                <image src="/images/fenlei/qitazhishi.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==1&&ss_xx.shuoshuo_xingxi.subclass==5}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 表白墙-表白 -->
+                <image src="/images/fenlei/biaobai.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==2&&ss_xx.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 表白墙-捞人 -->
+                <image src="/images/fenlei/laoren.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==2&&ss_xx.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 表白墙-卖舍友 -->
+                <image src="/images/fenlei/maisheyou.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==2&&ss_xx.shuoshuo_xingxi.subclass==2}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-运动 -->
+                <image src="/images/fenlei/yundong.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==3&&ss_xx.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-学习 -->
+                <image src="/images/fenlei/xuexi.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==3&&ss_xx.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-逛街 -->
+                <image src="/images/fenlei/guangjie.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==3&&ss_xx.shuoshuo_xingxi.subclass==2}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-旅游 -->
+                <image src="/images/fenlei/lvyou.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==3&&ss_xx.shuoshuo_xingxi.subclass==3}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 觅友-游戏 -->
+                <image src="/images/fenlei/youxi.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==3&&ss_xx.shuoshuo_xingxi.subclass==4}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 万能代-代拿 -->
+                <image src="/images/fenlei/daina.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==4&&ss_xx.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 万能代-代跑 -->
+                <image src="/images/fenlei/daipao.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==4&&ss_xx.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 吐槽 -->
+                <image src="/images/fenlei/tucao.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==5&&ss_xx.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 寻物-寻失 -->
+                <image src="/images/fenlei/xunshi.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==6&&ss_xx.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 寻物-觅主 -->
+                <image src="/images/fenlei/mizhu.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==6&&ss_xx.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 闲鱼-出售 -->
+                <image src="/images/fenlei/mai0.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==7&&ss_xx.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 闲鱼-欲购 -->
+                <image src="/images/fenlei/mai1.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==7&&ss_xx.shuoshuo_xingxi.subclass==1}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 其他 -->
+                <image src="/images/fenlei/qita.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==8&&ss_xx.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+
+                <!-- 休闲 -->
+                <image src="/images/fenlei/xiuxian.png" wx:if="{{ss_xx.shuoshuo_xingxi.bankuai==0&&ss_xx.shuoshuo_xingxi.subclass==0}}" 
+                style="width:43rpx;height:43rpx;margin-right:10rpx"/>
+          </view>
+
+        </view>
+
+        <view style="width:690rpx; margin:0rpx 30rpx;">
+          <text decode style=" font-size: 30rpx;opacity: 0.75;">{{ss_xx.shuoshuo_xingxi.username}}&nbsp;&nbsp;&nbsp;{{ss_xx.shuoshuo_xingxi.look}}阅读&nbsp;&nbsp;&nbsp;{{tools.getTime(ss_xx._time,2)}}</text>
+        </view>
+
+
+        <!-- 内容 -->
+        <view wx:for="{{ss_xx.shuoshuo_xingxi.nr}}" wx:key="index" wx:for-item="item0" wx:for-index="index0" 
+        style="width:690rpx; margin: 0rpx 30rpx; margin-bottom: 20rpx; ">
+
+          <!-- 文本 -->
+          <block wx:if="{{item0.flag==0}}">
+
+            <view>
+              <text user-select="true" style=" font-size: 33rpx; opacity: 0.75;">
+              {{item0.nr}}
+              </text>
+            </view>
+            
+          </block>
+
+
+          <!-- 图片 -->
+          <block wx:else>
+            <view>
+              <image src="{{item0.nr}}" mode="aspectFit" bindtap="lookimg" data-url="{{item0.nr}}" style="max-width: 690rpx; max-height: 370rpx;">
+              </image>
+            </view>
+          </block>
+
+        </view>
+
+        
+        <view style="width:750rpx; display: flex; justify-content: center; align-items: center; ">
+          <text style=" font-size: 33rpx; opacity: 0.75;">——如有侵权联系删除·著作权归作者所有——</text> 
+        </view>
+
+
+        <!-- 转发 -->
+        <button plain="true" class="zhuanfa" open-type="share" style="display: flex; border: 0rpx; align-items: center; float: right;">
+          <text style=" font-size: 33rpx; opacity: 0.75;">转发</text>
+          <image src="/images/icon/zhuanfa.png" style="width:50rpx;height:50rpx" ></image>
+        </button>
+      </view>
+
+
+      <!-- 用户点赞评论动态 -->
+      <view class="dibu" style="width: 100%; bottom: 0rpx; height: 100rpx; display:flex; justify-content: space-between; align-items: center; position:fixed; border-top:thin solid #f5f5f5; background-color:#ffffff; ">
+
+        <!-- 用户头像名称 -->
+        <view bindtap="Tomytopic" data-id="{{ss_xx.shuoshuo_xingxi.userid}}" style="display: flex; margin-left: 5%;">
+          <view style="display: flex; align-items: center;">
+            <image src="{{ss_xx.shuoshuo_xingxi.userphoto}}" style="width: 80rpx; height: 80rpx; overflow: hidden; border-radius: 50%; margin-right: 10rpx;"></image>
+            <view style="color: #26688f;">{{ss_xx.shuoshuo_xingxi.username}}</view>
+          </view>
+        </view>
+
+
+        <!-- 点赞 -->
+        <view wx:if="{{liuyan==false}}" class="dianzan" style="display:flex;" bindtap="dianzan" data-id="{{ss_xx._id}}" data-dianzanid="{{ss_xx.shuoshuo_xingxi.dianzanid}}" >
+          <view class="wz" wx:if="{{dianzan}}" style="color:#d81e06" >点赞</view>
+          <view class="wz" wx:if="{{!dianzan}}">点赞</view>
+          <image class="tp" wx:if="{{dianzan}}" src="/images/icon/zan2.png" style="width:50rpx;height:50rpx" ></image>
+          <image class="tp" wx:if="{{!dianzan}}" src="/images/icon/zan1.png" style="width:50rpx; height:50rpx" ></image>
+        </view>
+
+        <!-- 举报 -->
+        <view class="dianzan" bindtap="jubao" style="display: flex;" data-id="{{ss_xx._id}}" data-jubao="{{ss_xx.shuoshuo_xingxi.jubao}}" >
+          <view>举报</view>
+          <image  src="/images/icon/jubao.png" style="width:50rpx;height:50rpx" ></image>
+        </view>
+
+        <!-- 评论 -->
+        <view style="display: flex; margin-right: 5%;" bindtap="bokepinglun">
+          <image src="/images/icon/pinglun.png" style="width: 50rpx; height: 50rpx;"></image>
+          <view>评论</view>
+        </view>
+
+      </view>
+
+
+
+      <!-- 下面是评论弹出页 -->
+      <page-container show="{{bkpl}}" position="bottom" round="15rpx"
+          overlay-style = "background-color: rgba(0, 0, 0, 0.1);" custom-style="height: 80%;" bind:clickoverlay="bokepinglun">
+
+
+              <!-- 第一部分,“n条评论”四个字 -->
+              <view class="C1" style="font-size:70%; display: flex; justify-content: center; align-items: center; width:750rpx; height: 6%; border-bottom:thin solid #ffffff;">
+              {{ss_xx.shuoshuo_xingxi.huifunb}}条评论
+              </view>
+
+
+
+                <!-- 下面是评论回复 -->
+                <!-- 下面说啊说评论区 -->
+                <view class="C" style="height: 86%; margin: 1% 20rpx;">
+
+                  <scroll-view scroll-y="true" style="width: 100%; height: 100%;">
+                
+                  
+                  <!-- 下面为评论数据空白时的图片 -->
+                  <view class="kong1" style="display:flex;justify-content:center" >
+                    <image wx:if="{{ss_xx.shuoshuo_xingxi.huifunr.length==0}}" class="kong2" 
+                    src="cloud://wan-an-gpnu-4gm1hsj6bb4b58fb.7761-wan-an-gpnu-4gm1hsj6bb4b58fb-1309987324/sys/kong.png" mode="widthFix" style="width:400rpx;margin-top:80rpx;height:auto;margin-bottom:30rpx;" />
+                  </view>
+
+                  <!-- 额外加个倒序 -->
+                  <view class="daoxu" style="display:flex;flex-direction:column-reverse;" >
+                    <!-- 第二部分,遍历所有评论 -->
+                    <view class="C2" style="display:flex;" 
+                    wx:for="{{ss_xx.shuoshuo_xingxi.huifunr}}" 
+                    wx:key="index" 
+                    wx:for-item="item0"
+                    wx:for-index="index0"
+                    bindlongpress="changanshanchu"
+                    data-id0="{{item0.plrid}}" data-index="{{index0}}" data-time="{{item0.time}}" data-huifunb="{{item0.huifunb}}" >
+                      <!-- 头像部分 -->
+                      <view class="C21" style="flex:1;margin:5rpx" catchtap="Tomytopic"  data-id="{{item0.plrid}}">
+                        <image wx:if="{{true}}" class="photo" src="{{item0.photo}}" mode="widthFix" style="border-radius:50%;overflow: hidden; height: 70rpx; width: 70rpx;" ></image>
+                        <image wx:else class="photo" src="/images/user/niming.png" mode="widthFix" style="border-radius:50%;overflow: hidden; height: 50rpx; width: 50rpx;" ></image>
+                      </view>
+
+                      <!-- 头像右边所有 -->
+                      <view class="C22" style="flex:15;display:flex;flex-direction:column;margin:5rpx" >
+                        <!-- name-->
+                        <view class="C221" style="display:flex;align-items:center" >
+                          <!-- name及 -->
+                          <view class="name" wx:if="{{true}}" style="font-size:80%;color:#175167;white-space: pre-line;word-break: break-all;word-wrap: break-word;" >{{item0.name}}</view>
+                          <view class="name" wx:else style="font-size:80%;color:#175167;" >匿名用户</view>
+                        </view>
+                        <!-- 发布内容 -->
+                        <view class="C222" style="margin:10rpx 0rpx;white-space:pre-line;word-break:break-all;word-wrap:break-word;margin-right:20rpx; font-size: 100%;" >{{item0.wbnr}}</view>
+                        <!-- 发布时间及回复 -->
+                        <view class="wai" style="display:flex" >
+                          <view class="C223" style="font-size:80%;color:#B0B0B0" >{{tools.timeChn(item0.time)}}</view>
+                          <text class="hf" catchtap="huifu" data-xx="{{item0}}" data-index="{{index0}}" style="margin-left:20rpx;font-weight:bold;font-size:85%;color:#656565" >回复</text>
+                        </view>
+
+
+                        <!-- 回复评论的评论展开 -->
+                        <view class="wai" wx:if="{{item0.huifu.length>0}}" style="margin-top:15rpx;border-radius: 8rpx;overflow: hidden;" bindtap="zhankai" data-index="{{index0}}" hidden="{{item0.zhankai}}" >
+                          <view class="wb"  style="font-size:70%;color:#757575;" >——展开{{item0.huifu.length}}条回复▶</view>
+                        </view>
+
+                        <!-- 展示回复 -->
+                        <view class="pinglun" 
+                        wx:for="{{item0.huifu}}" 
+                        wx:key="index1"
+                        wx:for-index="index1"
+                        wx:for-item="item1"
+                        style="display:flex" 
+                        wx:if="{{item0.zhankai}}"
+                        catchlongpress="changanshanchu"
+                        data-id0="{{item0.plrid}}" data-index="{{index0}}" data-time="{{item0.time}}" data-index1="{{index1}}" data-id1="{{item1.plrid}}" data-time1="{{item1.time}}" 
+                        >
+                          <!-- 头像 -->
+                          <view class="zuo" style="flex:1;margin-top:10rpx" >
+                            <image wx:if="{{item1.niming!=true}}" class="photo" src="{{item1.photo}}" mode="widthFix" style="border-radius:50%;overflow: hidden; width: 50rpx; height: 50rpx;" catchtap="Tomytopic" data-id="{{item1.plrid}}"></image>
+                            <image wx:else class="photo" src="/images/user/niming.png" mode="widthFix" style="border-radius:50%;overflow: hidden; height: 50rpx; width: 50rpx;" ></image>
+                          </view>
+
+                          <!-- 头像右边所有 -->
+                          <view class="you" style="flex:11;display:flex;flex-direction:column;margin-top:0rpx" >
+                            <!-- name-->
+                            <view class="C221" style="display:flex;align-items:center" >
+                              <!-- name及 -->
+                              <view class="name" style="font-size:80%;color:#175167;white-space: pre-line;word-break: break-all;word-wrap: break-word; margin-left: 5rpx; margin-top: 18rpx;" >{{item1.name}}</view>
+                            </view>
+                            <!-- 发布内容 -->
+                            <view class="C222" style="white-space:pre-line;word-break:break-all;word-wrap:break-word; margin: 10rpx 0rpx;" >{{item1.wbnr}}</view>
+
+                            <!-- 发布时间及回复 -->
+                            <view class="wai" style="display:flex" >
+                              <view class="C223" style="font-size:80%;color:#B0B0B0" >{{tools.timeChn(item1.time)}}</view>
+
+                              <text class="hf" catchtap="huifu" data-xx="{{item0}}" data-xx1="{{item1}}" data-index="{{index0}}" data-index1="{{index1}}" style="margin-left:20rpx;font-weight:bold;font-size:85%;color:#656565" >回复</text>
+
+                              <view class="wai" style="margin-left:20rpx;font-size:80%;color:#757575;" bindtap="shouqi" data-index="{{index0}}" hidden="{{!item0.zhankai}}" >--收起▲</view>
+                            </view>
+                          </view>
+                        </view>
+
+
+                        <view class="line" style="margin-bottom: 20rpx;"></view>
+
+
+                      </view>
+
+                    </view>
+                  </view>
+                  
+
+                  </scroll-view>
+
+                </view>
+                <!-- 上面说啊说评论区 -->
+                <!-- 上面是评论回复 -->
+
+
+
+
+
+              <!-- 第三部分, 下面是评论框 -->
+              <form bindsubmit="fasong">
+                <view class="pinglun" style="display:flex; justify-items: center; align-items: center; position:fixed; bottom:0rpx;width:750rpx;;border-top:thin solid #f5f5f5; height: 6%; background: white;">
+                  <view class="bg" style="display:flex; justify-items: center; align-items: center; border-radius: 50rpx;overflow: hidden;background-color:#e6e6e6;width:720rpx; height: 80%; margin:0rpx 15rpx">
+                    <input type="text" bindinput="wbnr" placeholder="留下你的精彩评论吧" focus="{{focus}}" value='{{wbnr}}' placeholder-style="color:#656565;"  bindblur="shijiao" 
+                    style="width:100%;margin:0rpx 30rpx;" maxlength="150"></input>
+                    <view bindtap="fasong" 
+                    style="width:130rpx; margin-right:20rpx;color:#F76260" >| 发送</view>
+                  </view>
+                </view>
+              </form>
+              <!-- 上面是评论框 -->
+
+
+      </page-container>
+      <!-- 上面是评论弹出页 -->
+
+
+    </view>
+
+      
+  
+  </block>
+
+
+</block>
+
+
+
+
+
+
+
+<!-- 失效 -->
+<block wx:if="{{ss_xx==0}}">
+  <!-- 下面为失效状态 -->
+  <view class="shixiao" style="display:flex;flex-direction:column; justify-content:center">  
+    <image src="/images/shixiao.png" mode="widthFix" style="width:100%;height:auto" >
+    </image>
+    <text style="color:#656565;text-align:center;width:100%">这条动态消失了~~</text>
+  </view>
+  <!-- 上面为失效状态 -->
+</block>
